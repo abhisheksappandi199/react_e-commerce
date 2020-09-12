@@ -82,7 +82,7 @@ firebase.initializeApp({
     }
     console.log(productdata);
     console.log(this.state.downloadURLs);
-    this.setState({productname:'',price:'',description:"",stock:'',fileList:[],color:''})
+    this.setState({productname:'',price:'',description:"",stock:'',filenames:[],downloadURLs:[],color:''})
     this.props.dispatch(startAddproduct(productdata))
 }
     render() {

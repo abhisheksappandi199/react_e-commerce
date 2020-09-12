@@ -5,6 +5,8 @@
     margin: 16px 28px 16px 0;
     float: left;
   }
+  .margin{
+}
   
   .site-layout-background {
     background: #fff;
@@ -49,11 +51,15 @@
 .logout {
 	float: right;
 	border-bottom: none !important;
-
 	color: white !important;
-	
+	font-weight: 600;
+	overflow-x: hidden; 
 }
 
 .logout:hover {
 	color: hsla(0, 0%, 100%, 0.7) !important;
+}
+.nav-item-logot {
+	color: white !important;
+	float: right;
 }

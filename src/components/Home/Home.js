@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {startGetproduct} from '../../actions/productAction'
+import ProductList from '../ProductList/ProductList.js'
+import ProductFilter from '../ProductFilter/ProductFilter.js'
+import { Row, Col } from 'antd';
+
 
  class Home extends Component {
     constructor(){
@@ -8,13 +13,20 @@ import {connect} from 'react-redux'
        }
     }
     componentDidMount(){
-        console.log('home page')
+        this.props.dispatch(startGetproduct())
     }
 
     render() {
         return (
             <div>
-                Home
+                <Row>
+                <Col span={4}>
+                <ProductFilter/>
+                </Col>
+                <Col span={20}>
+                <ProductList products={this.props.products}/>
+                </Col>
+                </Row>
                 
             </div>
         )
@@ -22,7 +34,8 @@ import {connect} from 'react-redux'
 }
 const mapStateToProps = (state) =>{
     return {
-        login : state.login
+        login : state.login,
+        products : state.products
     }
 }
 

@@ -15,7 +15,7 @@ export const remove = (id) =>{
 
 export const startGetproduct = () =>{
     return (dispatch) =>{
-        axios.get('http://dct-billing-app.herokuapp.com/api/products',{
+        axios.get('http://localhost:3333/api/products',{
             headers : {
                 'Authorization' : 'Bearer '+ localStorage.getItem("authToken")
             }
@@ -42,7 +42,7 @@ export const startAddproduct = (data)=>{
             const user = response.data
             console.log(user);
             if(!user.errors){
-                dispatch(add(user))
+                //dispatch(add(user))
             }  
         })
         .catch((error)=>[

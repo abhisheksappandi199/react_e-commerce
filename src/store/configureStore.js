@@ -11,7 +11,7 @@ const configureStore = () => {
         register : registerReducer,
         login : loginReducer,
         admin : adminReducer,
-        product : productReducer
+        products : productReducer
 
     }), applyMiddleware(thunk))
     return store

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route , Link ,Switch} from 'react-router-dom'
+import { Route , Link ,Switch } from 'react-router-dom'
 import Login from '../Login/Login.js'
 import Register from '../Register/Register.js'
 import Home from '../Home/Home.js'
@@ -8,6 +8,8 @@ import Account from '../Account/Account.js'
 import Header from '../Header/Header.js'
 import Admin from '../Admin/Admin.js'
 import Owner from '../Owner/Owner.js'
+import ProductShow from '../ProductShow/ProductShow.js'
+
 
 class Routes extends Component {
     constructor(){
@@ -20,6 +22,7 @@ class Routes extends Component {
             <div>
               
             <Header/>
+            
             <Link to='/'/>
             <Link to='/register'/>
             <Link to='/home'/>
@@ -31,10 +34,11 @@ class Routes extends Component {
             <Route path='/' component={Login} exact={true}/>
             <Route path='/register' component={Register}/>
             <Route path='/account' component={Account}/>
-            <Route path='/home' component={Home}/>
+            <Route path='/home' component={Home} exact={true}/>
             <Route path='/admin' component={Admin}/>
             <Route path='/owner' component={Owner}/>
-            </Switch>  
+            <Route path='/home/:id' component={ProductShow}/>
+            </Switch>
             </div>
         )
     }
