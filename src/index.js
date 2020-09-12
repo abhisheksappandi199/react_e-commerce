@@ -1,17 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import 'antd/dist/antd.css'
+import App from './App'
+import configureStore from './store/configureStore'
+import { Provider } from 'react-redux'
+import {BrowserRouter as Router} from 'react-router-dom'
+import {startPostLogin} from './actions/loginAction'
+const store = configureStore()
+console.log('store initial state', store.getState())
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+store.subscribe(() => {
+    console.log(store.getState())
+})
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+//for hanlding the reloads
+if(localStorage.getItem('authToken')){
+}
+
+const jsx = (
+    <Provider store={store}>
+        <Router>
+            <App/>
+        </Router>   
+    </Provider>
+)
+
+ReactDOM.render(jsx,document.getElementById('root'))
