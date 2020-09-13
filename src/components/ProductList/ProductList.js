@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { Card, Col, Row } from 'antd';
 import {Link } from 'react-router-dom'
 import {withRouter} from 'react-router'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
+import {startShowproduct}  from '../../actions/showAction'
 import './productlist.css'
 
 const { Meta } = Card;
 
 
- class Lists extends Component {
+ class ProductList extends Component {
      constructor(props){
          super()
          this.state={
@@ -16,7 +17,7 @@ const { Meta } = Card;
          }
      }
      handleSelectProduct = (id) =>{
-
+        this.props.dispatch(startShowproduct(id))
      }
     render() {
         return (
@@ -46,6 +47,10 @@ const { Meta } = Card;
         )
     }
 }
-const ProductList = withRouter(Lists)
-
-export default ProductList
+const mapStateToProps = (state,props) =>{
+    const id = props.match.params.id
+     return {
+         products : state.products
+     }
+ }
+export default withRouter(connect(mapStateToProps)(ProductList))

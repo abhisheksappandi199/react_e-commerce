@@ -21,7 +21,7 @@ export const startPostLogin = (logindata,redirect) =>{
                 dispatch(setuserlogin(data))
             }
             else{
-                // localStorage.setItem("authToken", data.token)
+                 localStorage.setItem("authToken", data.token)
                 // axios.get(`http://localhost:3333/api/products`)
                 // .then((response)=>{
                 //     const allProducts = response.data

@@ -24,7 +24,7 @@ import { Row, Col } from 'antd';
                 <ProductFilter/>
                 </Col>
                 <Col span={20}>
-                <ProductList products={this.props.products}/>
+                <ProductList/>
                 </Col>
                 </Row>
                 
