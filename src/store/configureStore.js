@@ -6,6 +6,7 @@ import loginReducer from '../reducers/loginReducer'
 import adminReducer from '../reducers/adminReducer'
 import productReducer from '../reducers/productReducer'
 import showReducer from '../reducers/showReducer'
+import userAccountReducer from '../reducers/userAccountReducer'
 import cartReducer from '../reducers/cartReducer'
 
 const configureStore = () => {
@@ -15,6 +16,7 @@ const configureStore = () => {
         admin : adminReducer,
         products : productReducer,
         product : showReducer,
+        user : userAccountReducer ,
         cart : cartReducer
 
     }), applyMiddleware(thunk))

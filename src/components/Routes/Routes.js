@@ -10,6 +10,8 @@ import Admin from '../../components/Admin/Admin.js'
 import Owner from '../../components/Owner/Owner.js'
 import ProductShow from '../../components/ProductShow/ProductShow.js'
 import UserInfo from '../../components/UserInfo/UserInfo.js'
+import UserAddress from '../../components/UserAddress/UserAddress.js'
+import Cart from '../../components/Cart/Cart.js'
 
 class Routes extends Component {
     constructor(){
@@ -39,6 +41,8 @@ class Routes extends Component {
             <Route path='/owner' component={Owner}/>
             <Route path='/home/:id' component={ProductShow}/>
             <Route path='/account/user' component={UserInfo}/>
+            <Route path='/account/address' component={UserAddress}/>
+            <Route path='/cart' component={Cart}/>
             </Switch>
             </div>
         )

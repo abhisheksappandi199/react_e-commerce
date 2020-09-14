@@ -10,19 +10,23 @@ class Account extends Component {
             <div className='account-margin'>
                 
                 <Row gutter={[16 , 24]}>
+
                 <button className='card-margin'>
                 <Link to='/account/user'>
                 <Card title="User Information" style={{ width: 300 }} >
                     <p>card content</p>
                 </Card>
                 </Link>
-
                 </button>
+
                 <button className='card-margin'> 
-                <Card title="Address" style={{ width: 300 }}>
+                <Link to='/account/address'>
+                <Card title="User Address" style={{ width: 300 }}>
                     <p>Card content</p>
                 </Card>
+                </Link>
                 </button>
+
                 <button className='card-margin'> 
                 <Card title="Payment Details" style={{ width: 300 }}>
                     <p>Card content</p>
