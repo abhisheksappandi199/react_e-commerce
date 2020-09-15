@@ -3,10 +3,11 @@ import {connect} from 'react-redux'
 import {startGetCart} from '../../actions/cartAction'
 import { Row, Col } from 'antd';
 import CartItems from '../CartItems/CartItems.js'
+import Checkout from '../Checkout/Checkout.js'
 
 class Cart extends Component {
     componentDidMount(){
-        const id =this.props.cart.length > 0 && (this.props.cart[0]._id)
+        const id = ( this.props.cart.length === 1 && (this.props.cart[0]._id) )
         console.log(id);
         if(id){
             this.props.dispatch(startGetCart(id))
@@ -24,6 +25,7 @@ class Cart extends Component {
                         <CartItems data={this.props.cart}/>
                     </Col>
                     <Col span={6}>
+                        <Checkout/>
                     </Col>
                     </Row>
                   </div>    

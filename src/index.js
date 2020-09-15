@@ -18,8 +18,8 @@ store.subscribe(() => {
 
 //for hanlding the reloads
 if(localStorage.getItem('authToken')){
-    store.dispatch(startGetUserAccount())
-    store.dispatch(startGetproduct())
+    //store.dispatch(startGetUserAccount())
+    //store.dispatch(startGetproduct())
     //store.dispatch(startGetCart(localStorage.getItem('cartid')))
 }
 

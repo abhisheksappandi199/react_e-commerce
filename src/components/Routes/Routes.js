@@ -12,6 +12,7 @@ import ProductShow from '../../components/ProductShow/ProductShow.js'
 import UserInfo from '../../components/UserInfo/UserInfo.js'
 import UserAddress from '../../components/UserAddress/UserAddress.js'
 import Cart from '../../components/Cart/Cart.js'
+import AddressForm from '../../components/AddressForm/AddressForm.js'
 
 class Routes extends Component {
     constructor(){
@@ -41,8 +42,9 @@ class Routes extends Component {
             <Route path='/owner' component={Owner}/>
             <Route path='/home/:id' component={ProductShow}/>
             <Route path='/account/user' component={UserInfo}/>
-            <Route path='/account/address' component={UserAddress}/>
+            <Route path='/account/address' component={UserAddress} exact={true}/>
             <Route path='/cart' component={Cart}/>
+            <Route path='/account/address/form' component={AddressForm}/>
             </Switch>
             </div>
         )

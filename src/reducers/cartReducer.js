@@ -17,6 +17,31 @@ const cartReducer = (state =[] ,action) =>{
 
             })
         }
+        case 'GET_INCREMENT' : {
+            return state.map((cart)=>{
+                if(cart._id === action.payload.cartid){
+                        return {...cart , ...action.payload.obj}
+                }else
+                {
+                    return {...cart}
+                }
+
+            })
+        }
+        case 'GET_DECREMENT': {
+            return state.map((cart)=>{
+                if(cart._id === action.payload.cartid){
+                        return {...cart , ...action.payload.obj}
+                }else
+                {
+                    return {...cart}
+                }
+
+            })
+        }
+        case 'REMOVE_CARTITEM_PRODUCT':{
+            return state[0].products.filter(e => e._id != action.payload.productid)
+        }
         default : {
             return [...state]
         }
