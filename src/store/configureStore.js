@@ -8,6 +8,8 @@ import productReducer from '../reducers/productReducer'
 import showReducer from '../reducers/showReducer'
 import userAccountReducer from '../reducers/userAccountReducer'
 import cartReducer from '../reducers/cartReducer'
+import addressReducer from '../reducers/addressReducer'
+import searchReducer from '../reducers/searchReducer'
 
 const configureStore = () => {
     const store = createStore(combineReducers({
@@ -17,7 +19,9 @@ const configureStore = () => {
         products : productReducer,
         product : showReducer,
         user : userAccountReducer ,
-        cart : cartReducer
+        cart : cartReducer ,
+        address : addressReducer ,
+        search : searchReducer
 
     }), applyMiddleware(thunk))
     return store

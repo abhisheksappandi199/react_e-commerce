@@ -15,13 +15,15 @@ import { Row, Col } from 'antd';
     componentDidMount(){
         this.props.dispatch(startGetproduct())
     }
-
+    handleFilter = (item) => [
+        this.setState({})
+    ]
     render() {
         return (
             <div>
                 <Row>
                 <Col span={4}>
-                <ProductFilter/>
+                <ProductFilter handleFilter={this.handleFilter}/>
                 </Col>
                 <Col span={20}>
                 <ProductList/>

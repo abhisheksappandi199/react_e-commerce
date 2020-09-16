@@ -50,7 +50,7 @@
 }
 
 .addressform-card {
-	height: 429px;
+	height: 729px;
     width: 426px;
 }
 
@@ -83,5 +83,18 @@
 	height: 20%;
 	font-weight: 500;
 	color: #fff;
+	cursor: pointer;
+}
+#addressform-red-button {
+	padding: 20px 32px !important;
+	margin-top: 36px !important;
+
+	background-color: #800000;
+	border-color: #800000;
+	border-radius: 3px;
+	transition: .2s;
+	height: 20%;
+	font-weight: 500;
+	color: #800000;
 	cursor: pointer;
 }

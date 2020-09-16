@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {startGetUserAccount} from '../../actions/useraAccountAction'
-import { Card, Avatar } from 'antd';
+import { Card, Avatar ,Modal} from 'antd';
 import { EditOutlined, EllipsisOutlined ,UploadOutlined} from '@ant-design/icons';
-import { Modal, Button } from 'antd';
 import {startUpdateUser } from '../../actions/useraAccountAction'
-import Upload from './Upload'
 
 const { Meta } = Card;
 
@@ -58,9 +56,6 @@ class UserInfo extends Component {
       }
       handleChange = (e) =>{
           this.setState({ [e.target.name] : e.target.value })
-      }
-      handlePicUpload = () => {
-
       }
     render() {
         return (

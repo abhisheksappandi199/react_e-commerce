@@ -19,13 +19,45 @@ const { Meta } = Card;
      handleSelectProduct = (id) =>{
         this.props.dispatch(startShowproduct(id))
      }
+    filter = () =>{
+         if(this.props.search.length > 0){
+              if(this.props.search[0].search){
+                  return (this.props.products.filter(ele => ele.name.includes(this.props.search[0].search)))
+              }
+              else if(this.props.search[0].minprice){
+                  return (this.props.products.filter(ele =>(this.props.search[0].minprice) <= ele.price && ele.price <=(this.props.search[0].maxprice) ))
+              }
+              else if(this.props.search[0].color){
+                  return (this.props.products.filter(ele => ele.color == this.props.search[0].color))
+              }
+              else if(this.props.search[0].sort == 'lowtohigh'){
+                    return (this.props.products.sort((a ,b) => a.price - b.price))
+              }
+              else if(this.props.search[0].sort == 'hightolow'){
+                return (this.props.products.sort((a ,b) => b.price - a.price))
+              }
+              else if(this.props.search[0].sort == 'new'){
+                return (this.props.products.sort((a ,b) => a.createdAt - b.createdAt))
+              }
+              else if(this.props.search[0].sort == 'featured'){
+                return this.props.products
+              }
+              else {
+                return this.props.products
+              }
+         } 
+         else {
+             return this.props.products
+         }
+     }
+
     render() {
         return (
             <div className='div-component'>
                 {console.log(this.props)}
                 <Row gutter={[16 , { xs: 8, sm: 16, md: 24, lg: 32 }]}>
                 {
-                    this.props.products.map((e , index)=> {
+                    (this.filter()).map((e , index)=> {
                         return (
                         <Col key={index}>
                             <Link to={`/home/${e._id}`}>
@@ -50,7 +82,8 @@ const { Meta } = Card;
 const mapStateToProps = (state,props) =>{
     const id = props.match.params.id
      return {
-         products : state.products
+         products : state.products ,
+         search : state.search
      }
  }
 export default withRouter(connect(mapStateToProps)(ProductList))

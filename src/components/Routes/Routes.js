@@ -13,6 +13,7 @@ import UserInfo from '../../components/UserInfo/UserInfo.js'
 import UserAddress from '../../components/UserAddress/UserAddress.js'
 import Cart from '../../components/Cart/Cart.js'
 import AddressForm from '../../components/AddressForm/AddressForm.js'
+import Offers from '../../components/Offers/Offers.js'
 
 class Routes extends Component {
     constructor(){
@@ -45,6 +46,7 @@ class Routes extends Component {
             <Route path='/account/address' component={UserAddress} exact={true}/>
             <Route path='/cart' component={Cart}/>
             <Route path='/account/address/form' component={AddressForm}/>
+            <Route path='/offers' component={Offers}/>
             </Switch>
             </div>
         )
