@@ -1,22 +1,22 @@
 import axios from '../config/axios'
 
-export const getaddress = (user) =>{
-    return {type:'GET_ADDRESS' ,payload:user}
+export const getcategory = (user) =>{
+    return {type:'GET_CATEGORY' ,payload:user}
 }
-export const addaddress = (user) =>{
-    return {type:'ADD_ADDRESS' ,payload:user}
+export const addcategory = (user) =>{
+    return {type:'ADD_CATEGORY' ,payload:user}
 }
-export const updateaddress = (_id ,obj) =>{
-    return {type:'UPDATE_ADDRESS' , payload:{_id,obj}}
+export const updatecategory = (_id ,obj) =>{
+    return {type:'UPDATE_CATEGORY' , payload:{_id,obj}}
 }
-export const removeaddress = (id) =>{
-    return {type:'REMOVE_ADDRESS' , payload:id} 
+export const removecategory = (id) =>{
+    return {type:'REMOVE_CATEGORY' , payload:id} 
 }
 
 
-export const startGetaddress = () =>{
+export const startGetcategory = () =>{
     return (dispatch) =>{
-        axios.get('/address',{
+        axios.get('/category',{
             headers : {
                 'Authorization' :  localStorage.getItem("authToken")
             }
@@ -25,7 +25,7 @@ export const startGetaddress = () =>{
             const user = response.data
             //console.log(user);
             
-            dispatch(getaddress(user))
+            dispatch(getcategory(user))
         })
         .catch((error)=>[
             alert(error.message)
@@ -33,9 +33,9 @@ export const startGetaddress = () =>{
     }
 }
 
-export const startAddaddress = (data,redirect)=>{
+export const startAddcategory = (data,redirect)=>{
     return (dispatch) =>{
-        axios.post('/address',data,{
+        axios.post('/category',data,{
             headers : {
                 'Authorization' :  localStorage.getItem("authToken")
             }
@@ -44,7 +44,7 @@ export const startAddaddress = (data,redirect)=>{
             const user = response.data
             console.log(user);
             if(!user.errors){
-                dispatch(addaddress(user))
+                dispatch(addcategory(user))
                 redirect()
             }  
         })
@@ -53,9 +53,9 @@ export const startAddaddress = (data,redirect)=>{
         ])
     }
 }
-export const startUpdateaddress = (_id,obj) =>{
+export const startUpdatecategory = (_id,obj) =>{
     return (dispatch)=>{
-        axios.put(`/address/${_id}`,obj,{
+        axios.put(`/category/${_id}`,obj,{
             headers : {
                 'Authorization' :  localStorage.getItem("authToken")
             }
@@ -63,7 +63,7 @@ export const startUpdateaddress = (_id,obj) =>{
         .then((response)=>{
             const user = response.data
             if(!user.errors){
-                dispatch(updateaddress(_id,user))
+                dispatch(updatecategory(_id,user))
             }
             
         })
@@ -72,9 +72,9 @@ export const startUpdateaddress = (_id,obj) =>{
         ])
     }
 }
-export const startRemoveaddress = (id) =>{
+export const startRemovecategory = (id) =>{
     return (dispatch)=>{
-        axios.delete(`/address/${id}`,{
+        axios.delete(`/category/${id}`,{
             headers : {
                 'Authorization' :  localStorage.getItem("authToken")
             }
@@ -82,7 +82,7 @@ export const startRemoveaddress = (id) =>{
         .then((response)=>{
             const user = response.data
             if(!user.errors){
-                dispatch(removeaddress(id))
+                dispatch(removecategory(id))
             }
         })
         .catch((error)=>{

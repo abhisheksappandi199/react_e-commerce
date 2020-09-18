@@ -19,7 +19,7 @@ export default class Owner extends Component {
                     <TabPane tab="Create Product" key="1">
                         <Product/>
                     </TabPane>
-                    <TabPane tab="Tab Title 2" key="2">
+                    <TabPane tab="carosal img_upload" key="2">
                         <File/>
                     </TabPane>
                     <TabPane tab="Tab Title 3" key="3">

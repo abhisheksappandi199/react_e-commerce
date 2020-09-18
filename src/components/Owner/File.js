@@ -1,50 +1,81 @@
-import { Upload, Button } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
-import React from 'react'
+import React from "react";
+import ReactDOM from "react-dom";
+import FileUploader from "react-firebase-file-uploader";
+import Firebase from '../../config/firebase';
+// Setup Firebase
 
 class File extends React.Component {
-  state = {
-    fileList: [
-      {
-        uid: '-1',
-        name: 'xxx.png',
-        status: 'done',
-        url: 'http://www.baidu.com/xxx.png',
-      },
-    ],
-  };
-
-  handleChange = info => {
-    let fileList = [...info.fileList];
-
-    // 1. Limit the number of uploaded files
-    // Only to show two recent uploaded files, and old ones will be replaced by the new
-    fileList = fileList.slice(-10);
-
-    // 2. Read from response and show file link
-    fileList = fileList.map(file => {
-      if (file.response) {
-        // Component will show file.url as link
-        file.url = file.response.url;
-      }
-      return file;
+  constructor(){
+    super()
+    this.state ={
+      filenames: [],
+      downloadURLs: [],
+      isUploading: false,
+      uploadProgress: 0
+    }
+  }
+ 
+  handleUploadStart = () =>
+    this.setState({
+      isUploading: true,
+      uploadProgress: 0
     });
-
-    this.setState({ fileList });
-    console.log(this.state.fileList);
+ 
+  handleProgress = progress =>
+    this.setState({
+      uploadProgress: progress
+    });
+ 
+  handleUploadError = error => {
+    this.setState({
+      isUploading: false
+      // Todo: handle error
+    });
+    console.error(error);
   };
-
+ 
+  handleUploadSuccess = async filename => {
+    const downloadURL = await Firebase
+      .storage()
+      .ref("carosal")
+      .child(filename)
+      .getDownloadURL();
+ 
+    this.setState(oldState => ({
+      filenames: [...oldState.filenames, filename],
+      downloadURLs: [...oldState.downloadURLs, downloadURL],
+      uploadProgress: 100,
+      isUploading: false
+    }));
+  };
+ 
   render() {
-    const props = {
-      action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-      onChange: this.handleChange,
-      multiple: true,
-    };
     return (
-      <Upload {...props} fileList={this.state.fileList}>
-        <Button icon={<UploadOutlined />}>Upload</Button>
-      </Upload>
+      <div>
+        <FileUploader
+          accept="carosal/*"
+          name="image-uploader-multiple"
+          randomizeFilename
+          storageRef={Firebase.storage().ref("carosal")}
+          onUploadStart={this.handleUploadStart}
+          onUploadError={this.handleUploadError}
+          onUploadSuccess={this.handleUploadSuccess}
+          onProgress={this.handleProgress}
+          multiple
+        />
+ 
+        <p>Progress: {this.state.uploadProgress}</p>
+ 
+        <p>Filenames: {this.state.filenames.join(", ")}</p>
+ 
+        <div>
+          {this.state.downloadURLs.map((downloadURL, i) => {
+            return <img key={i} src={downloadURL} />;
+          })}
+        </div>
+      </div>
     );
   }
 }
+
 export default File

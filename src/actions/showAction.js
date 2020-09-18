@@ -1,11 +1,11 @@
-import axios from 'axios'
+import axios from '../config/axios'
 
 export const showproduct = (user) =>{
     return {type:'SHOW_PRODUCT' ,payload:user}
 }
 export const startShowproduct = (id)=>{
     return (dispatch) =>{
-        axios.get(`http://localhost:3333/api/products/${id}`,{
+        axios.get(`/products/${id}`,{
             headers : {
                 'Authorization' :  localStorage.getItem("ownerToken")
             }

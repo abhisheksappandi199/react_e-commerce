@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../config/axios'
 
 export const setRegister = (data) =>{
     return {type:'REGISTER' , payload : data}
@@ -6,7 +6,7 @@ export const setRegister = (data) =>{
 
 export const startpostRegister = (registerdata , redirect) =>{
     return (dispatch) =>{
-        axios.post('http://localhost:3333/api/users/register',registerdata)
+        axios.post('/users/register',registerdata)
         .then((response)=>{
             const data = response.data
             dispatch(setRegister(data))

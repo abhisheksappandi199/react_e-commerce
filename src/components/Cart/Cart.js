@@ -11,7 +11,7 @@ class Cart extends Component {
         console.log(id);
         if(id){
             this.props.dispatch(startGetCart(id))
-            localStorage.setItem('cartid',id)
+            //localStorage.setItem('cartid',id)
         }
     }
     render() {

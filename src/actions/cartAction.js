@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../config/axios'
 
 export const getcart = (cart) =>{
     return {type:'GET_CARTITEM' ,payload:cart}
@@ -15,13 +15,16 @@ export const getincrement = (cartid,productid,obj) =>{
 export const getdecrement = (cartid,productid,obj) =>{
     return {type:'GET_DECREMENT' ,payload:{cartid,productid,obj}}
 }
-export const removecart = (cartid,productid) =>{
+export const removecartproduct = (cartid,productid) =>{
     return {type:'REMOVE_CARTITEM_PRODUCT' , payload:{cartid,productid}}
+}
+export const removecart = (id) => {
+    return {type:'REMOVE_CARTITEM' ,payload :id}
 }
 
 export const startGetCart = (id) =>{
     return (dispatch) =>{
-        axios.get(`http://localhost:3333/api/cartitems/${id}`,{
+        axios.get(`/cartitems/${id}`,{
             headers : {
                 'Authorization' :  localStorage.getItem("authToken")
             }
@@ -40,7 +43,7 @@ export const startGetCart = (id) =>{
 
 export const startAddFirstCart = (id)=>{
     return (dispatch) =>{
-        axios.get(`http://localhost:3333/api/cartitems/addcart/${id}`,{
+        axios.get(`/cartitems/addcart/${id}`,{
             headers : {
                 'Authorization' : localStorage.getItem("authToken")
             },
@@ -59,7 +62,7 @@ export const startAddFirstCart = (id)=>{
 }
 export const startAddCart = (id,obj)=>{
     return (dispatch) =>{
-        axios.post(`http://localhost:3333/api/cartitems/add/${id}`,obj,{
+        axios.post(`/cartitems/add/${id}`,obj,{
             headers : {
                 'Authorization' : localStorage.getItem("authToken")
             },
@@ -78,7 +81,7 @@ export const startAddCart = (id,obj)=>{
 }
 export const startGetCartIncrement = (cartid,productid) =>{
     return (dispatch) =>{
-        axios.put(`http://localhost:3333/api/cartitems/quantity/${cartid}/${productid}?type=up`,{
+        axios.put(`/cartitems/quantity/${cartid}/${productid}?type=up`,{
             headers : {
                 'Authorization' :  localStorage.getItem("authToken")
             }
@@ -96,7 +99,7 @@ export const startGetCartIncrement = (cartid,productid) =>{
 }
 export const startGetCartDecrement = (cartid,productid) =>{
     return (dispatch) =>{
-        axios.put(`http://localhost:3333/api/cartitems/quantity/${cartid}/${productid}?type=down`,{
+        axios.put(`/cartitems/quantity/${cartid}/${productid}?type=down`,{
             headers : {
                 'Authorization' :  localStorage.getItem("authToken")
             }
@@ -114,7 +117,7 @@ export const startGetCartDecrement = (cartid,productid) =>{
 }
 export const startRemoveCartProduct = (cartid,productid) =>{
     return (dispatch)=>{
-        axios.delete(`http://localhost:3333/api/cartitems/remove/${cartid}/${productid}`,{
+        axios.delete(`/cartitems/remove/${cartid}/${productid}`,{
             headers : {
                 'Authorization' :  localStorage.getItem("authToken")
             }
@@ -122,7 +125,26 @@ export const startRemoveCartProduct = (cartid,productid) =>{
         .then((response)=>{
             const user = response.data
             if(!user.errors){
-                dispatch(removecart(cartid,productid))
+                dispatch(removecartproduct(cartid,productid))
+            }
+        })
+        .catch((error)=>{
+            alert(error.message)
+        })
+    }
+}
+
+export const startRemoveCart = (id) =>{
+    return (dispatch)=>{
+        axios.delete(`/cartitems/removecart/${id}`,{
+            headers : {
+                'Authorization' :  localStorage.getItem("authToken")
+            }
+        })
+        .then((response)=>{
+            const user = response.data
+            if(!user.errors){
+                dispatch(removecart(id))
             }
         })
         .catch((error)=>{

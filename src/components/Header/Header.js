@@ -31,6 +31,7 @@ class HeaderComponent extends React.Component {
     handelSearch = (value) =>{
         let obj = {}
         obj.search = value
+        this.props.history.push('/list')
         this.props.dispatch(searchproduct(obj))
     }
     

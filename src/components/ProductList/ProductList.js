@@ -4,6 +4,7 @@ import {Link } from 'react-router-dom'
 import {withRouter} from 'react-router'
 import {connect} from 'react-redux'
 import {startShowproduct}  from '../../actions/showAction'
+import {startGetproduct} from '../../actions/productAction'
 import './productlist.css'
 
 const { Meta } = Card;
@@ -16,9 +17,30 @@ const { Meta } = Card;
            
          }
      }
+     componentDidMount(){
+        if(this.props.products.length == 0){
+            this.props.dispatch(startGetproduct())
+        }
+     }
      handleSelectProduct = (id) =>{
         this.props.dispatch(startShowproduct(id))
      }
+    //  category = () => {
+    //     if(this.props.category){
+    //         console.log(this.props.category);
+    //         if(this.props.category._id){
+    //             console.log('in catregory');
+    //             return (this.props.products.filter(e => e.category == this.props.category._id))
+    //         }
+    //         else {
+    //             return (this.filter())
+    //         }
+    //      }
+    //      else {
+    //         console.log('in cat in filter');
+    //         return (this.filter())
+    //     }
+    //  }
     filter = () =>{
          if(this.props.search.length > 0){
               if(this.props.search[0].search){
@@ -57,10 +79,10 @@ const { Meta } = Card;
                 {console.log(this.props)}
                 <Row gutter={[16 , { xs: 8, sm: 16, md: 24, lg: 32 }]}>
                 {
-                    (this.filter()).map((e , index)=> {
+                     (this.filter()).map((e , index)=> {
                         return (
                         <Col key={index}>
-                            <Link to={`/home/${e._id}`}>
+                            <Link to={`/list/${e._id}`}>
                             <Card
                                 hoverable
                                 style={{ width: 240 }}
@@ -72,7 +94,7 @@ const { Meta } = Card;
                             </Link>
                         </Col>    
                         )
-                    })
+                    })  
                 }
                 </Row>
             </div>
@@ -80,10 +102,13 @@ const { Meta } = Card;
     }
 }
 const mapStateToProps = (state,props) =>{
-    const id = props.match.params.id
+    const path = window.location.pathname.split('/')
+    const id = path[path.length - 1]
+    console.log(props);
      return {
          products : state.products ,
-         search : state.search
+         search : state.search ,
+         //category : state.category.find(e => e._id == id)
      }
  }
 export default withRouter(connect(mapStateToProps)(ProductList))

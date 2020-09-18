@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
 import {startAddproduct} from '../../actions/productAction'
 import {connect} from 'react-redux'
-import firebase from "firebase";
+import Firebase from '../../config/firebase';
 import FileUploader from "react-firebase-file-uploader";
+import {startGetcategory} from '../../actions/categoryAction'
 
-firebase.initializeApp({
-    apiKey: "AIzaSyDcOjOvEd_dkjnuH3s4PnWRrzr60KgMmLA",
-    authDomain: "react-upload-bd7bd.firebaseapp.com",
-    databaseURL: "https://react-upload-bd7bd.firebaseio.com",
-    projectId: "react-upload-bd7bd",
-    storageBucket: "react-upload-bd7bd.appspot.com",
-    messagingSenderId: "1010249251241",
-    appId: "1:1010249251241:web:0934e4179cf138c446acb8",
-    measurementId: "G-4LLXSQ1LVT"
-  });
+// firebase.initializeApp({
+//     apiKey: "AIzaSyDcOjOvEd_dkjnuH3s4PnWRrzr60KgMmLA",
+//     authDomain: "react-upload-bd7bd.firebaseapp.com",
+//     databaseURL: "https://react-upload-bd7bd.firebaseio.com",
+//     projectId: "react-upload-bd7bd",
+//     storageBucket: "react-upload-bd7bd.appspot.com",
+//     messagingSenderId: "1010249251241",
+//     appId: "1:1010249251241:web:0934e4179cf138c446acb8",
+//     measurementId: "G-4LLXSQ1LVT"
+//   });
   
  class Product extends Component {
      constructor(){
@@ -29,11 +30,20 @@ firebase.initializeApp({
              downloadURLs: [],
              isUploading: false,
              uploadProgress: 0,
-             username : 'abhishek'
+             username : 'abhishek',
+             size :'',
+             categoryselect :[] ,
+             category : ''
          }
      }
-
-     handleChange=(e)=>{
+     //['5f62ef76022d7310a0ba9caa','5f62ef87022d7310a0ba9cab']
+    componentDidMount(){
+      this.props.dispatch(startGetcategory())
+      this.setState({ categoryselect : this.props.category })
+      console.log(this.state.category);
+    }
+    
+    handleChange=(e)=>{
         this.setState({[e.target.name] : e.target.value})
     }
     handleUploadStart = () =>
@@ -56,7 +66,7 @@ firebase.initializeApp({
   };
 
   handleUploadSuccess = async filename => {
-    const downloadURL = await firebase
+    const downloadURL = await Firebase
       .storage()
       .ref("images")
       .child(filename)
@@ -69,7 +79,9 @@ firebase.initializeApp({
       isUploading: false
     }));
   };
-  
+  handleCategoryChange = (e) =>{
+    this.setState({ category : e.target.value})
+  }
   handleSubmit=(e)=>{
     e.preventDefault()
     const productdata = {
@@ -78,11 +90,13 @@ firebase.initializeApp({
         description : this.state.description,
         stock : this.state.stock,
         image : this.state.downloadURLs,
-        color : this.state.color
+        color : this.state.color,
+        size : this.state.size ,
+        category : this.state.category
     }
     console.log(productdata);
     console.log(this.state.downloadURLs);
-    this.setState({productname:'',price:'',description:"",stock:'',filenames:[],downloadURLs:[],color:''})
+    this.setState({productname:'',price:'',description:"",stock:'',filenames:[],downloadURLs:[],color:'',size:'',category:''})
     this.props.dispatch(startAddproduct(productdata))
 }
     render() {
@@ -134,6 +148,26 @@ firebase.initializeApp({
                 onChange={this.handleChange}
                 /><br/><br/>
 
+                <label>size</label>
+                <input 
+                type='text'
+                name='size'
+                placeholder='size'
+                value={this.state.size}
+                onChange={this.handleChange}
+                /><br/><br/>
+                <label>Catergory</label><br/>
+                <select onChange={this.handleCategoryChange} value={this.state.category}>
+                  <option value=''>select</option>
+                    {
+                        this.props.category.map(e => {
+                            return (
+                                <option value={e._id} key={e._id}>{e.name}</option>
+                            )
+                        })
+                    }
+                </select><br/>
+
                 <label>image</label><br/>
                 <div>
                     <FileUploader
@@ -141,7 +175,7 @@ firebase.initializeApp({
                     name="image-uploader-multiple"
                     randomizeFilename
                     //filename={this.state.filenames}
-                    storageRef={firebase.storage().ref("images")}
+                    storageRef={Firebase.storage().ref("images")}
                     onUploadStart={this.handleUploadStart}
                     onUploadError={this.handleUploadError}
                     onUploadSuccess={this.handleUploadSuccess}
@@ -168,4 +202,10 @@ firebase.initializeApp({
         )
     }
 }
-export default connect()(Product)
+const mapStateToProps = (state,props) =>{
+  console.log(props);
+   return {
+       category : state.category
+   }
+}
+export default connect(mapStateToProps)(Product)

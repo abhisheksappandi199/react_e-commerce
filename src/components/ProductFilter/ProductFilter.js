@@ -5,6 +5,12 @@ import {connect} from 'react-redux'
 import './productfilter.css'
 
 class ProductFilter extends Component {
+    constructor(){
+        super()
+        this.state = {
+            color : 'none'
+        }
+    }
     handlePriceChange = (min , max) => {
         let obj = {}
         obj.minprice = min
@@ -16,8 +22,10 @@ class ProductFilter extends Component {
             let obj = {}
             obj.color = color
             this.props.dispatch(searchproduct(obj))
+            this.setState({color})
         } else {
             this.props.dispatch(searchproduct({'none':'1'}))
+            this.setState({color: 'none'})
         }
 
     }
@@ -47,7 +55,7 @@ class ProductFilter extends Component {
                 <Button type='text' size='small' type="dashed"  onClick={()=>{this.handlePriceChange(10000 ,99999)}}>{`> ₹10,000`}</Button><br/>
             </div><br/>
             <div>
-                <b><big>Color :</big></b><hr/>
+                <b><big>Color :{"  "}<label style={{color : this.state.color }}>{this.state.color}</label></big></b><hr/>
                 <Button size='small' onClick={()=>{this.handleColorChange()}}><b>Clear</b></Button><br/>
                 <Button id='color-red-button' onClick={()=>{this.handleColorChange('red')}}>.</Button>
                 <Button id='color-green-button' onClick={()=>{this.handleColorChange('green')}}>.</Button>

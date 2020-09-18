@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route , Link ,Switch } from 'react-router-dom'
+import { Route , Link ,Switch, Router } from 'react-router-dom'
 import Login from '../../components/Login/Login.js'
 import Register from '../../components/Register/Register.js'
 import Home from '../../components/Home/Home.js'
@@ -14,6 +14,7 @@ import UserAddress from '../../components/UserAddress/UserAddress.js'
 import Cart from '../../components/Cart/Cart.js'
 import AddressForm from '../../components/AddressForm/AddressForm.js'
 import Offers from '../../components/Offers/Offers.js'
+import List from '../../components/List/List.js'
 
 class Routes extends Component {
     constructor(){
@@ -41,12 +42,13 @@ class Routes extends Component {
             <Route path='/home' component={Home} exact={true}/>
             <Route path='/admin' component={Admin}/>
             <Route path='/owner' component={Owner}/>
-            <Route path='/home/:id' component={ProductShow}/>
+            <Route path='/list/:id' component={ProductShow}/>
             <Route path='/account/user' component={UserInfo}/>
             <Route path='/account/address' component={UserAddress} exact={true}/>
             <Route path='/cart' component={Cart}/>
             <Route path='/account/address/form' component={AddressForm}/>
             <Route path='/offers' component={Offers}/>
+            <Route path='/list' component={List}/>
             </Switch>
             </div>
         )

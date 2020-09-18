@@ -1,7 +1,10 @@
-import axios from 'axios'
+import axios from '../config/axios'
 
 export const get = (user) =>{
     return {type:'GET_PRODUCT' ,payload:user}
+}
+export const getcategory = (user) =>{
+    return {type:'GET_CATEGORY_PRODUCT' ,payload:user}
 }
 export const add = (user) =>{
     return {type:'ADD_PRODUCT' ,payload:user}
@@ -26,6 +29,23 @@ export const startGetproduct = () =>{
             //console.log(user);
             
             dispatch(get(user))
+        })
+        .catch((error)=>[
+            alert(error.message)
+        ])
+    }
+}
+export const startGetCategoryproduct = (id) =>{
+    return (dispatch) =>{
+        axios.get(`http://localhost:3333/api/products/category/${id}`,{
+            headers : {
+                'Authorization' :  localStorage.getItem("authToken")
+            }
+        })
+        .then((response)=>{
+            const user = response.data
+            dispatch(getcategory(user))
+            
         })
         .catch((error)=>[
             alert(error.message)

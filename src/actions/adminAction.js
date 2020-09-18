@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../config/axios'
 
 export const adminsetuserlogin = (data) =>{
     return {type:'ADMIN_LOGIN_ERROR' , payload:data}
@@ -10,7 +10,7 @@ export const adminuserdata = (data) =>{
 
 export const startAdminPostLogin = (logindata,redirect) =>{
     return (dispatch) =>{
-        axios.post('http://localhost:3333/api/users/login/admin',logindata)
+        axios.post('/users/login/admin',logindata)
         .then((response)=>{
             const data = response.data
             //dispatch(setuserlogin(data))

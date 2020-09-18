@@ -1,7 +1,12 @@
+import { act } from "react-dom/test-utils"
+
 const productReducer = (state =[] ,action) =>{
     switch(action.type){
         case 'GET_PRODUCT':{
             return [ ...action.payload]
+        }
+        case 'GET_CATEGORY_PRODUCT' : {
+            return [...action.payload]
         }
         case 'ADD_PRODUCT':{
             return [...state , action.payload]

@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../config/axios'
 
 export const setuserlogin = (data) =>{
     return {type:'LOGIN_ERROR' , payload:data}
@@ -10,7 +10,7 @@ export const userdata = (data) =>{
 
 export const startPostLogin = (logindata,redirect) =>{
     return (dispatch) =>{
-        axios.post('http://localhost:3333/api/users/login',logindata)
+        axios.post('/users/login',logindata)
         .then((response)=>{
             const data = response.data
             //dispatch(setuserlogin(data))
@@ -22,7 +22,7 @@ export const startPostLogin = (logindata,redirect) =>{
             }
             else{
                  localStorage.setItem("authToken", data.token)
-                // axios.get(`http://localhost:3333/api/products`)
+                // axios.get(`/products`)
                 // .then((response)=>{
                 //     const allProducts = response.data
                 //     //console.log(allProducts);

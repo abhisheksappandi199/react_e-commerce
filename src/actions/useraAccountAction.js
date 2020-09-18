@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../config/axios'
 
 export const getuser = (user) =>{
     return {type:'GET_USER_ACCOUNT' ,payload:user}
@@ -9,7 +9,7 @@ export const updateuser = (obj) =>{
 
 export const startGetUserAccount = () =>{
     return (dispatch) =>{
-        axios.get('http://localhost:3333/api/account',{
+        axios.get('/account',{
             headers : {
                 'Authorization' :  localStorage.getItem("authToken")
             }
@@ -27,7 +27,7 @@ export const startGetUserAccount = () =>{
 }
 export const startUpdateUser = (obj) =>{
     return (dispatch)=>{
-        axios.put(`http://localhost:3333/api/account/edit`,obj,{
+        axios.put(`/account/edit`,obj,{
             headers : {
                 'Authorization' :  localStorage.getItem("authToken")
             }
