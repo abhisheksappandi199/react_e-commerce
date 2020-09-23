@@ -5,6 +5,9 @@ import image from '../../photo.jpg'
 import './account.css'
 
 class Account extends Component {
+    handleChange = () => {
+        window.alert('functionality under progress')
+    }
     render() {
         return (
             <div className='account-margin'>
@@ -19,15 +22,15 @@ class Account extends Component {
                 </Link>
                 </button>
 
-                <button className='card-margin'> 
-                <Link to='/account/address'>
+                <button className='card-margin' onClick={this.handleChange}> 
+                {/* <Link to='/account/address'> */}
                 <Card title="User Address" style={{ width: 300 }}>
                     <p>Card content</p>
                 </Card>
-                </Link>
+                {/* </Link> */}
                 </button>
 
-                <button className='card-margin'> 
+                <button className='card-margin' onClick={this.handleChange}> 
                 <Card title="Payment Details" style={{ width: 300 }}>
                     <p>Card content</p>
                 </Card>

@@ -52,7 +52,7 @@ class UserAddress extends Component {
               visible: false,
               confirmLoading: false,
             });
-          }, 2000)
+          }, 400)
         const obj ={
             name : this.state.username,
             landmark : this.state.landmark,
@@ -87,47 +87,43 @@ class UserAddress extends Component {
     }
     handleDelete = (id) => {
         this.props.dispatch(startRemoveaddress(id))
-    }
+    } //  <DeleteOutlined onClick={()=>{this.handleDelete(e._id)}}/>
     render() {
+        const e = this.props.address[0]
         return (
             <div>
-                <Row gutter={[16 , { xs: 8, sm: 16, md: 24, lg: 32 }]}>
                 {
-                    this.props.address.map((e , index)=> {
-                        return (
-                        <Col key={index}>
-                            <Card 
-                                title={<h3>Address {index+1}</h3>}
-                                style={{ width: 430 }}
-                                actions={[ <EditOutlined key="edit" onClick={()=>{this.showModal(e)}}/> , <DeleteOutlined onClick={()=>{this.handleDelete(e._id)}}/>]}
+                    this.props.address.length == 1 ? (
+                        <Card 
+                            title={<h3>Address</h3>}
+                            style={{ width: 430 }}
+                            actions={[ <EditOutlined key="edit" onClick={()=>{this.showModal(e)}}/> ,<DeleteOutlined onClick={()=>{this.handleDelete(e._id)}}/>]} 
                             >
-                                <b>
-                                <label>Name   :{' '}</label>{e.name}<br/>
-                                <label>Mobile :{' '}</label>{e.mobile}<br/>
-                                <label>Street :{' '}</label><p>{e.street}</p><br/>
-                                <label>Landmark :{' '}</label>{e.landmark}<br/>
-                                <label>City :{' '}</label>{e.city}<br/>
-                                <label>State :{' '}</label>{e.states}<br/>
-                                <label>Pincode :{' '}</label>{e.Pincode}<br/>
-                                <label>Alternate Ph. :{' '}</label>{e.alternatemobile}<br/>
-                                <label>Addresstype :{' '}</label>{e.addresstype}<br/>
-                                </b>
-                            </Card>
-                        </Col>    
-                        )
-                    })
+                            <>
+                            <b><label>Name   :{' '}</label></b>{e.name}<br/>
+                            <b><label>Mobile :{' '}</label></b>{e.mobile}<br/>
+                            <b><label>Street :{' '}</label></b><p>{e.street}</p><br/>
+                            <b><label>Landmark :{' '}</label></b>{e.landmark}<br/>
+                            <b><label>City :{' '}</label></b>{e.city}<br/>
+                            <b><label>State :{' '}</label></b>{e.states}<br/>
+                            <b><label>Pincode :{' '}</label></b>{e.pincode}<br/>
+                            <b><label>Alternate Ph. :{' '}</label></b>{e.alternatemobile}<br/>
+                            <b><label>Addresstype :{' '}</label></b>{e.addresstype}<br/>
+                            </>
+                        </Card>
+                    )
+                    : 
+                    (
+                        <button className='card-margin'>
+                        <Link to='/account/address/form'>
+                        <Card title="Add Adress" style={{ width: 300 }} >
+                            <p><big><b>+</b></big></p>
+                        </Card>
+                        </Link>
+                        </button>
+                    )
                 }
-                </Row>
-
-                <Row gutter={[16 , 24]}>
-                <button className='card-margin'>
-                <Link to='/account/address/form'>
-                <Card title="Add Adress" style={{ width: 300 }} >
-                    <p><big><b>+</b></big></p>
-                </Card>
-                </Link>
-                </button>
-                </Row>
+                
                 <Modal
                     title="Title"
                     visible={this.state.visible}

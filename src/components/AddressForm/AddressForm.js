@@ -47,7 +47,7 @@ class AddressForm extends Component {
         this.setState({name:'',mobile:'',alternatemobile:'',street:'',landmark:'',city:'',states:'',pincode:'',addresstype:''})
         //redirect
         const redirect = () =>{
-            return this.props.history.push('/account/address')
+            return this.props.history.push('/cart')
         }
         this.props.dispatch(startAddaddress(addressdata,redirect))
      }
@@ -156,7 +156,7 @@ class AddressForm extends Component {
 
                 <Button block size="medium" id="green-button" type="primary" htmltype="submit" onClick={this.handleSubmit}> addressform </Button>
                 </form><br/>
-                <Button block size="medium" id="red-button" type="primary" ><Link to='/account/address'>Cancel</Link></Button>
+                <Button block size="medium" id="red-button" type="primary"><Link to='/cart'>Cancel</Link></Button> 
                 </Card>
             </div>
         )

@@ -4,6 +4,7 @@ import { Row, Col } from 'antd';
 import {startGetCartIncrement , startGetCartDecrement ,startRemoveCartProduct ,startRemoveCart} from '../../actions/cartAction'
 import {connect} from 'react-redux'
 import { DeleteOutlined} from '@ant-design/icons';
+import './cartitems.css'
 
 class CartItems extends Component {
     handleIncrement = (product) =>{
@@ -28,7 +29,7 @@ class CartItems extends Component {
         return (
             <div>
             {/* <h1>Total : Rs.{total}/-</h1> <br/> */}
-            <h2> Delete Cart <DeleteOutlined onClick={this.hanldeDelete}/> </h2> 
+            <h3 align='center'> Delete Cart <DeleteOutlined onClick={this.hanldeDelete} style={{color :'red'}}/> </h3> 
             {
                 this.props.cart[0] && ( this.props.cart[0].products.length > 0 ? ( this.props.cart[0].products.map((product , index) => {
                     return( 
@@ -36,7 +37,7 @@ class CartItems extends Component {
                         <Card style={{ width: 500 }} >
                         <Row>
                         <Col span={10}>
-                        {/* <Avatar shape="square" size={128} icon={<img src={product.image}/>} /> */}
+                        <Avatar shape="square" size={128} icon={<img src={product.image}/>} />
                         </Col>
                         <Col span={14}>
                             <h3><b>{product._id}</b></h3>

@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import {BrowserRouter as Router} from 'react-router-dom'
 import {startGetUserAccount} from './actions/useraAccountAction'
 import {startGetproduct} from './actions/productAction'
-import {startGetCart} from './actions/cartAction'
+import {startGetaddress} from './actions/addressAction'
 
 const store = configureStore()
 console.log('store initial state', store.getState())
@@ -20,7 +20,7 @@ store.subscribe(() => {
 if(localStorage.getItem('authToken')){
     store.dispatch(startGetUserAccount())
     store.dispatch(startGetproduct())
-    //store.dispatch(startGetCart())
+    store.dispatch(startGetaddress())
 }
 
 const jsx = (

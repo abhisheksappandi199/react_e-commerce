@@ -24,8 +24,9 @@ export const startGetaddress = () =>{
         .then((response)=>{
             const user = response.data
             //console.log(user);
-            
-            dispatch(getaddress(user))
+            if(!user.driver){
+                dispatch(getaddress(user))
+            }
         })
         .catch((error)=>[
             alert(error.message)
