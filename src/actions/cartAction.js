@@ -6,8 +6,8 @@ export const getcart = (cart) =>{
 export const addFirstCart = (cart) =>{
     return {type:'ADD_FIRST_CARTITEM' ,payload:cart}
 }
-export const addCart = (id ,cart) =>{
-    return {type:'ADD_CARTITEM' ,payload:{id,cart}}
+export const addCart = (cart) =>{
+    return {type:'ADD_CARTITEM' ,payload:{cart}}
 }
 export const getincrement = (cartid,productid,obj) =>{
     return {type:'GET_INCREMENT' ,payload:{cartid,productid ,obj}}
@@ -22,18 +22,19 @@ export const removecart = (id) => {
     return {type:'REMOVE_CARTITEM' ,payload :id}
 }
 
-export const startGetCart = (id) =>{
+export const startGetCart = () =>{
     return (dispatch) =>{
-        axios.get(`/cartitems/${id}`,{
+        axios.get(`/cartitems`,{
             headers : {
                 'Authorization' :  localStorage.getItem("authToken")
             }
         })
         .then((response)=>{
             const user = response.data
-            console.log(user);
-            
-            dispatch(getcart(user))
+            //console.log(user);
+            if(user){
+                dispatch(getcart(user))
+            }
         })
         .catch((error)=>[
             alert(error.message)
@@ -41,28 +42,28 @@ export const startGetCart = (id) =>{
     }
 }
 
-export const startAddFirstCart = (id)=>{
+// export const startAddFirstCart = (id)=>{
+//     return (dispatch) =>{
+//         axios.get(`/cartitems/addcart/${id}`,{
+//             headers : {
+//                 'Authorization' : localStorage.getItem("authToken")
+//             },
+//         })
+//         .then((response)=>{
+//             const cart = response.data
+//             console.log(cart);
+//             if(!cart.errors || ( !cart[0].driver) ){
+//                 dispatch(addFirstCart(cart))
+//             }  
+//         })
+//         .catch((error)=>[
+//             console.log(error.message)
+//         ])
+//     }
+// }
+export const startAddCart = (obj)=>{
     return (dispatch) =>{
-        axios.get(`/cartitems/addcart/${id}`,{
-            headers : {
-                'Authorization' : localStorage.getItem("authToken")
-            },
-        })
-        .then((response)=>{
-            const cart = response.data
-            console.log(cart);
-            if(!cart.errors || ( !cart[0].driver) ){
-                dispatch(addFirstCart(cart))
-            }  
-        })
-        .catch((error)=>[
-            console.log(error.message)
-        ])
-    }
-}
-export const startAddCart = (id,obj)=>{
-    return (dispatch) =>{
-        axios.post(`/cartitems/add/${id}`,obj,{
+        axios.post(`/cartitems/add`,obj,{
             headers : {
                 'Authorization' : localStorage.getItem("authToken")
             },
@@ -71,12 +72,12 @@ export const startAddCart = (id,obj)=>{
             const cart = response.data
             console.log(cart);
             if(!cart.errors){
-                dispatch(addCart(id ,cart))
+                dispatch(addCart(cart))
             }  
         })
-        .catch((error)=>[
+        .catch((error)=>{
             console.log(error.message)
-        ])
+        })
     }
 }
 export const startGetCartIncrement = (cartid,productid) =>{

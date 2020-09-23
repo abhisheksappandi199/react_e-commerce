@@ -28,7 +28,7 @@ class CartItems extends Component {
         return (
             <div>
             {/* <h1>Total : Rs.{total}/-</h1> <br/> */}
-            <h2> <DeleteOutlined onClick={this.hanldeDelete}/> Delete Cart </h2> 
+            <h2> Delete Cart <DeleteOutlined onClick={this.hanldeDelete}/> </h2> 
             {
                 this.props.cart[0] && ( this.props.cart[0].products.length > 0 ? ( this.props.cart[0].products.map((product , index) => {
                     return( 
@@ -49,7 +49,7 @@ class CartItems extends Component {
                             <button onClick={()=>{this.handleIncrement(product)}}>+</button><br/>
                             <h3>Price :Rs.{product.price}/-</h3> 
                             <h3>Subtotal : <b>Rs.{product.price * product.quantity}/-</b></h3> 
-                            <DeleteOutlined onClick={()=>{this.handleRemoveProduct(product)}} />
+                            {/* <DeleteOutlined onClick={()=>{this.handleRemoveProduct(product)}} /> */}
                         </Col>
                         </Row>
                         </Card>

@@ -7,12 +7,13 @@ import Checkout from '../Checkout/Checkout.js'
 
 class Cart extends Component {
     componentDidMount(){
-        const id = ( this.props.cart.length === 1 && (this.props.cart[0]._id) )
-        console.log(id);
-        if(id){
-            this.props.dispatch(startGetCart(id))
-            //localStorage.setItem('cartid',id)
-        }
+        // const id = ( this.props.cart.length === 1 && (this.props.cart[0]._id) )
+        // console.log(id);
+        // if(id){
+            
+        //     //localStorage.setItem('cartid',id)
+        // }
+        this.props.dispatch(startGetCart())
     }
     render() {
         return (

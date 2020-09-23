@@ -4,7 +4,7 @@ import {Link } from 'react-router-dom'
 import {withRouter} from 'react-router'
 import {connect} from 'react-redux'
 import {startShowproduct}  from '../../actions/showAction'
-import {startGetproduct} from '../../actions/productAction'
+import {startGetproduct,startGetCategoryproduct} from '../../actions/productAction'
 import './productlist.css'
 
 const { Meta } = Card;
@@ -18,8 +18,15 @@ const { Meta } = Card;
          }
      }
      componentDidMount(){
+        const path = window.location.search
+        const id = path.slice(1)
         if(this.props.products.length == 0){
-            this.props.dispatch(startGetproduct())
+            if(id){
+                this.props.dispatch(startGetCategoryproduct(id))
+            }
+            else {
+                this.props.dispatch(startGetproduct())
+            }
         }
      }
      handleSelectProduct = (id) =>{
@@ -102,13 +109,13 @@ const { Meta } = Card;
     }
 }
 const mapStateToProps = (state,props) =>{
-    const path = window.location.pathname.split('/')
-    const id = path[path.length - 1]
-    console.log(props);
+    // const path = window.location.search
+    // const id = path.slice(1)
+    // console.log(path);
      return {
          products : state.products ,
          search : state.search ,
-         //category : state.category.find(e => e._id == id)
+         //catid : state.category.find(e => e._id == id)
      }
  }
 export default withRouter(connect(mapStateToProps)(ProductList))

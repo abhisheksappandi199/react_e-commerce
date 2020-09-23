@@ -19,7 +19,7 @@ export const remove = (id) =>{
 
 export const startGetproduct = () =>{
     return (dispatch) =>{
-        axios.get('http://localhost:3333/api/products',{
+        axios.get('/products',{
             headers : {
                 'Authorization' :  localStorage.getItem("authToken")
             }
@@ -37,15 +37,16 @@ export const startGetproduct = () =>{
 }
 export const startGetCategoryproduct = (id) =>{
     return (dispatch) =>{
-        axios.get(`http://localhost:3333/api/products/category/${id}`,{
+        axios.get(`/products/category/${id}`,{
             headers : {
                 'Authorization' :  localStorage.getItem("authToken")
             }
         })
         .then((response)=>{
             const user = response.data
-            dispatch(getcategory(user))
-            
+            if(user){
+                dispatch(getcategory(user))
+            }
         })
         .catch((error)=>[
             alert(error.message)
@@ -55,7 +56,7 @@ export const startGetCategoryproduct = (id) =>{
 
 export const startAddproduct = (data)=>{
     return (dispatch) =>{
-        axios.post('http://localhost:3333/api/products',data,{
+        axios.post('/products',data,{
             headers : {
                 'Authorization' :  localStorage.getItem("ownerToken")
             }

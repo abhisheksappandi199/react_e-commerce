@@ -50,7 +50,7 @@ const contentStyle = {
                         this.props.category.map(e => {
                             return (
                                 <div key={e._id}>
-                                    <button onClick={()=>{this.handleCategory(e._id)}}><Link to={`/list`}>{e.name}</Link></button>
+                                    <button onClick={()=>{this.handleCategory(e._id)}}><Link to={{pathname: `/list` , search:`${e._id}` }}>{e.name}</Link></button>
                                 </div>
                             )
                         })
