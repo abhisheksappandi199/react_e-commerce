@@ -28,9 +28,10 @@ export const startGetaddress = () =>{
                 dispatch(getaddress(user))
             }
         })
-        .catch((error)=>[
+        .catch((error)=>{
+            console.log(error);
             alert(error.message)
-        ])
+        })
     }
 }
 

@@ -5,6 +5,7 @@ import { Row, Col } from 'antd'
 import {Link } from 'react-router-dom'
 import CartItems from '../CartItems/CartItems.js'
 import UserAddress from '../UserAddress/UserAddress'
+import {startGetaddress} from '../../actions/addressAction'
 
 class Cart extends Component {
     componentDidMount(){
@@ -15,6 +16,7 @@ class Cart extends Component {
         //     //localStorage.setItem('cartid',id)
         // }
         this.props.dispatch(startGetCart())
+        this.props.dispatch(startGetaddress())
     }
     handleGetBill =() => {
         if(this.props.address.length > 0){

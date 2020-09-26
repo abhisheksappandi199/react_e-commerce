@@ -15,6 +15,7 @@ import Cart from '../../components/Cart/Cart.js'
 import AddressForm from '../../components/AddressForm/AddressForm.js'
 import Offers from '../../components/Offers/Offers.js'
 import List from '../../components/List/List.js'
+import Checkout from '../../components/Checkout/Checkout.js'
 
 class Routes extends Component {
     constructor(){
@@ -49,6 +50,7 @@ class Routes extends Component {
             <Route path='/account/address/form' component={AddressForm}/>
             <Route path='/offers' component={Offers}/>
             <Route path='/list' component={List}/>
+            <Route path='/checkout' component={Checkout}/>
             </Switch>
             </div>
         )

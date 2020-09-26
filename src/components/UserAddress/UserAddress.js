@@ -89,7 +89,7 @@ class UserAddress extends Component {
         this.props.dispatch(startRemoveaddress(id))
     } //  <DeleteOutlined onClick={()=>{this.handleDelete(e._id)}}/>
     render() {
-        const e = this.props.address[0]
+        const e = ( this.props.address.length > 0 && this.props.address[0] )
         return (
             <div>
                 {

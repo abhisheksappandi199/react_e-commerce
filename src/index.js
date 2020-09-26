@@ -20,7 +20,7 @@ store.subscribe(() => {
 if(localStorage.getItem('authToken')){
     store.dispatch(startGetUserAccount())
     store.dispatch(startGetproduct())
-    store.dispatch(startGetaddress())
+    //store.dispatch(startGetaddress())
 }
 
 const jsx = (

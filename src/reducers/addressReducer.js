@@ -1,7 +1,7 @@
 const addressReducer = (state =[] ,action) =>{
     switch(action.type){
         case 'GET_ADDRESS':{
-            return [ ...action.payload]
+            return [action.payload]
         }
         case 'ADD_ADDRESS':{
             return [...state , action.payload]
