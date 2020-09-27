@@ -1,5 +1,5 @@
-
 import React, { useState } from 'react'
+import {connect} from 'react-redux'
 
 function loadScript(src) {
 	return new Promise((resolve) => {
@@ -17,7 +17,7 @@ function loadScript(src) {
 
 const __DEV__ = document.domain === 'localhost'
 
-function Payment() {
+function Payment(props) {
 	const [name, setName] = useState('Mehul')
 
 	async function displayRazorpay() {
@@ -28,7 +28,7 @@ function Payment() {
 			return
 		}
 
-		const data = await fetch('http://localhost:3333/razorpay', { method: 'POST' }).then((t) =>
+		const data = await fetch(`http://localhost:3333/razorpay/${props.id}`, { method: 'POST' }).then((t) =>
 			t.json()
 		)
 
@@ -61,20 +61,28 @@ function Payment() {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<a
-					className="App-link"
-					onClick={displayRazorpay}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Donate $5
-				</a>
+        <button> 
+          <a
+            className="App-link"
+            onClick={displayRazorpay}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+          Pay Now
+          </a>
+        </button>
 			</header>
 		</div>
 	)
 }
-
 export default Payment
+// const mapStateToProps = (state) =>{
+//   return {
+//       bill : state.bill ,
+//       products : state.products 
+//   }
+// }
+// export default connect(mapStateToProps)(Payment)
 
 // import React, { Component } from 'react'
 // import axios from '../../config/axios';
