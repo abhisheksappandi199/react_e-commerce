@@ -12,6 +12,7 @@ import addressReducer from '../reducers/addressReducer'
 import searchReducer from '../reducers/searchReducer'
 import categoryhReducer from '../reducers/categoryReducer'
 import billReducer from '../reducers/billReducer'
+import myorderReducer from '../reducers/myorderReducer'
 
 const configureStore = () => {
     const store = createStore(combineReducers({
@@ -25,7 +26,8 @@ const configureStore = () => {
         address : addressReducer ,
         search : searchReducer ,
         category : categoryhReducer ,
-        bill : billReducer
+        bill : billReducer ,
+        myorder : myorderReducer
 
     }), applyMiddleware(thunk))
     return store
