@@ -24,7 +24,7 @@ export const startGetaddress = () =>{
         .then((response)=>{
             const user = response.data
             //console.log(user);
-            if(!user.driver){
+            if(user){
                 dispatch(getaddress(user))
             }
         })
@@ -44,15 +44,15 @@ export const startAddaddress = (data,redirect)=>{
         })
         .then((response)=>{
             const user = response.data
-            console.log(user);
-            if(!user.errors){
+            console.log("this is data came from address server ",user);
+            if(user){
                 dispatch(addaddress(user))
                 redirect()
             }  
         })
-        .catch((error)=>[
+        .catch((error)=>{
             alert(error.message)
-        ])
+        })
     }
 }
 export const startUpdateaddress = (_id,obj) =>{

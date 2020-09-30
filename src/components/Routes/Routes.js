@@ -16,6 +16,7 @@ import AddressForm from '../../components/AddressForm/AddressForm.js'
 import Offers from '../../components/Offers/Offers.js'
 import List from '../../components/List/List.js'
 import Checkout from '../../components/Checkout/Checkout.js'
+import UserOrders from '../../components/UserOrders/UserOrders.js'
 
 class Routes extends Component {
     constructor(){
@@ -46,6 +47,7 @@ class Routes extends Component {
             <Route path='/list/:id' component={ProductShow}/>
             <Route path='/account/user' component={UserInfo}/>
             <Route path='/account/address' component={UserAddress} exact={true}/>
+            <Route path='/account/orders' component={UserOrders} exact={true}/>
             <Route path='/cart' component={Cart}/>
             <Route path='/account/address/form' component={AddressForm}/>
             <Route path='/offers' component={Offers}/>

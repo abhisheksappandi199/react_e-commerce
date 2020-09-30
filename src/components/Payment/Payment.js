@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect } from 'react'
+import {startRemoveCart} from '../../actions/cartAction'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
+import {startGetCart} from '../../actions/cartAction'
 
 function loadScript(src) {
 	return new Promise((resolve) => {
@@ -20,6 +23,10 @@ const __DEV__ = document.domain === 'localhost'
 function Payment(props) {
 	const [name, setName] = useState('Mehul')
 
+	useEffect(() => {
+		props.dispatch(startGetCart())
+	  }, [])
+
 	async function displayRazorpay() {
 		const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
 
@@ -28,11 +35,11 @@ function Payment(props) {
 			return
 		}
 
-		const data = await fetch(`http://localhost:3333/razorpay/${props.id}`, { method: 'POST' }).then((t) =>
+		const data = await fetch(`http://localhost:3333/razorpay/${props.bill_id}`, { method: 'POST' }).then((t) =>
 			t.json()
 		)
 
-		console.log("thi sis the data : ",data)
+		console.log("this the data : ",data)
 
 		const options = {
 			key: 'rzp_test_6FWcmU32U1iLtf' ,
@@ -43,10 +50,14 @@ function Payment(props) {
 			description: 'Thank you for nothing. Please give us some money',
 			image: 'http://localhost:1337/logo.svg',
 			handler: function (response) {
-				alert(response.razorpay_payment_id)
-				alert(response.razorpay_order_id)
-				alert(response.razorpay_signature)
+				// alert(response.razorpay_payment_id)
+				// alert(response.razorpay_order_id)
+				// alert(response.razorpay_signature)
 				console.log(response);
+				if(response){
+					props.dispatch(startRemoveCart(props.cart[0]._id))
+					props.history.push('/home')
+				}
 			},
 			prefill: {
 				name,
@@ -59,7 +70,7 @@ function Payment(props) {
 	}
 
 	return (
-		<div className="App">
+		<div className="App">{console.log("props",props)}
 			<header className="App-header">
         <button> 
           <a
@@ -75,7 +86,12 @@ function Payment(props) {
 		</div>
 	)
 }
-export default Payment
+const mapStateToProps = (state) =>{
+    return {
+        cart : state.cart
+    }
+}
+export default withRouter(connect(mapStateToProps)(Payment))
 // const mapStateToProps = (state) =>{
 //   return {
 //       bill : state.bill ,

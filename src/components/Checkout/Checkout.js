@@ -25,7 +25,7 @@ class Checkout extends Component {
                                     return (
                                         <div className="float-container" key={e._id}>
                                         <Avatar className="float-image" shape="square" size={128} icon={<img src={e.image}/>}></Avatar>
-                                        <h3 className="float-child">Product :  </h3><h3>{e.product}</h3>
+                                        <h3 className="float-child">Product :  </h3><h3>{e.productname}</h3>
                                         <h3 className="float-child">Price :    </h3><h3>Rs.{e.price}/-</h3>
                                         <h3 className="float-child">Quantity : </h3><h3>{e.quantity}</h3>
                                         <h3 className="float-child">Subtotal : </h3><h3>Rs.{e.subtotal}/-</h3>
@@ -61,7 +61,9 @@ class Checkout extends Component {
                         <h2 align ='center'>Payment</h2>
                         <h2><li>Razorpay</li></h2>
                         <h3>Total Amount : Rs.{this.props.bill.length > 0 && this.props.bill[0].total}/-</h3>
-                        <Payment id={this.props.bill.length > 0 && this.props.bill[0]._id}/>
+                        <Payment 
+                            bill_id={this.props.bill.length > 0 && this.props.bill[0]._id}
+                        />
                     </Col>
                     </Row> 
             </div>

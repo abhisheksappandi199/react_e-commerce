@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import { withRouter } from "react-router-dom"
 import { FaShoppingCart } from "react-icons/fa";
 import {searchproduct} from '../../actions/searchAction'
+import logo from '../../assets/log.png'
 import './Header.css'
 
 const {Header} = Layout
@@ -44,7 +45,11 @@ class HeaderComponent extends React.Component {
             <Layout >
                 <Header className='header-component'>
                 <div className="logo">
-                    <ion-icon class='icon-book' name="book" size="medium"><Link className='menu-item' to="/home">logo</Link></ion-icon>
+                    <ion-icon className='icon-book' name="book" size="medium">
+                        <Link className='menu-item' to="/home">
+                            <img src={logo}/>
+                        </Link>
+                    </ion-icon>
                 </div>
                 {this.props.location.pathname == '/register' ? (
                     <Menu className='menu-component'  mode="horizontal">

@@ -32,7 +32,7 @@ handleSubmit=(e)=>{
  }
 render() {
     return (
-            <div className="login-main">
+            <div className="login-main">{console.log("login props",this.props)}
              <div className="login-container">
                 <ion-icon class='icon-book' name="book"></ion-icon>   
                 <h2 className="login-heading">Sign in to Ilkal Sarees</h2>
