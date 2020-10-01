@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
 import { Card ,Avatar ,Row} from 'antd';
 import {Link} from 'react-router-dom'
-import image from '../../photo.jpg'
+import {connect} from 'react-redux'
+import {startGetOrders} from '../../actions/myorderAction'
 import './account.css'
 
 class Account extends Component {
     handleChange = () => {
         window.alert('functionality under progress')
     }
-    render() {
+    // handleGetOrders =() =>{
+    //     if(this.props.myorder.length == 0){
+    //         this.props.dispatch(startGetOrders())
+    //     }
+    // }
+    render() {                   // onClick={this.handleGetOrders}
         return (
             <div className='account-margin'>
                 
@@ -17,15 +23,13 @@ class Account extends Component {
                 <button className='card-margin'>
                 <Link to='/account/user'>
                 <Card title="User Information" style={{ width: 300 }} >
-                    <p>card content</p>
                 </Card>
                 </Link>
                 </button>
 
                 <button className='card-margin'> 
                 <Link to='/account/orders'>
-                <Card title="Your Orders" style={{ width: 300 }}>
-                    <p>Card content</p>
+                <Card title="Your Orders" style={{ width: 300 }} > 
                 </Card>
                 </Link>
                 </button>
@@ -42,4 +46,9 @@ class Account extends Component {
         )
     }
 }
-export default Account
+const mapStateToProps = (state) =>{
+    return {
+        myorder : state.myorder
+    }
+}
+export default connect(mapStateToProps)(Account)
