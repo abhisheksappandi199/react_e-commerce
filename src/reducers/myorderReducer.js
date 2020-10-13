@@ -4,7 +4,7 @@ const myorderReducer = (state =[] ,action) =>{
             return [...action.payload]
         }
         case 'ADD_ORDER':{
-            return [action.payload]
+            return [...action.payload]
         }
         default : {
             return [...state]

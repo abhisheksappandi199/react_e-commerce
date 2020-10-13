@@ -1,4 +1,7 @@
 import axios from '../config/axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 export const addOrders = (order) =>{
     return {type:'ADD_ORDER' ,payload:order}
@@ -42,6 +45,15 @@ export const startAddOrders = (id ,data,redirect)=>{
             if(order){
                 dispatch(addOrders(order))
                 redirect()
+                toast.success('Order placed sucessfully' ,{
+                    position: "top-center",
+                    autoClose: 3500,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    })
             }  
         })
         .catch((error)=>{

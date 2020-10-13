@@ -30,7 +30,7 @@ class Routes extends Component {
               
             <Header/>
             
-            <Link to='/'/>
+            <Link to='/'/> 
             <Link to='/register'/>
             <Link to='/home'/>
             <Link to='/acount'/>

@@ -37,7 +37,7 @@ class UserInfo extends Component {
               visible: false,
               confirmLoading: false,
             });
-          }, 2000)
+          }, 500)
         const obj ={
             username : this.state.username,
             email : this.state.email,

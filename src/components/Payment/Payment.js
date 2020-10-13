@@ -60,7 +60,10 @@ function Payment(props) {
 						return props.history.push('/home')
 					}
 					props.dispatch(startRemoveCart(props.cart[0]._id))
-					props.dispatch(startAddOrders(props.bill[0]._id , response ,redirect))
+					const obj = {}
+					obj.razorpay_payment_id = response.razorpay_payment_id
+					obj.razorpay_order_id = response.razorpay_order_id
+					props.dispatch(startAddOrders(props.bill[0]._id , obj ,redirect))
 				}
 			},
 			prefill: {

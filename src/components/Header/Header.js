@@ -5,11 +5,14 @@ import {Link} from 'react-router-dom'
 import { withRouter } from "react-router-dom"
 import { FaShoppingCart } from "react-icons/fa";
 import {searchproduct} from '../../actions/searchAction'
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import logo from '../../assets/log.png'
 import './Header.css'
 
 const {Header} = Layout
 const { Search } = Input;
+toast.configure()
 
 
 class HeaderComponent extends React.Component {
@@ -24,6 +27,15 @@ class HeaderComponent extends React.Component {
             return this.props.history.push('/')
         }
         redirect()
+        toast.error('User sucessfully Logout..!!' ,{
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            })
     }
 
     goToLogin = () => {

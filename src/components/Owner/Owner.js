@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Tabs } from 'antd'
 import './owner.css'
 import Product from './Product'
-import File from './File'
+import TotalOrders from './TotalOrders'
 
 const {TabPane} = Tabs
 
@@ -19,8 +19,8 @@ export default class Owner extends Component {
                     <TabPane tab="Create Product" key="1">
                         <Product/>
                     </TabPane>
-                    <TabPane tab="carosal img_upload" key="2">
-                        <File/>
+                    <TabPane tab="Total Orders" key="2">
+                        <TotalOrders/>
                     </TabPane>
                     <TabPane tab="Tab Title 3" key="3">
                         

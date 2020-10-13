@@ -1,4 +1,7 @@
 import axios from '../config/axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 export const getcart = (cart) =>{
     return {type:'GET_CARTITEM' ,payload:cart}
@@ -72,8 +75,17 @@ export const startAddCart = (obj)=>{
             const cart = response.data
             console.log(cart);
             if(!cart.errors){
+                toast.success('Added to Cart', {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });
                 dispatch(addCart(cart))
-            }  
+            }
         })
         .catch((error)=>{
             console.log(error.message)
