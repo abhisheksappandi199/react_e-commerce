@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Link } from 'react-router-dom'
 import {startGetcategory} from '../../actions/categoryAction'
-import { Carousel,Card , Row , Col} from 'antd';
+import { Carousel,Card , Row , Col,Button} from 'antd';
 import {startGetCategoryproduct,startGetproduct} from '../../actions/productAction'
+import { Parallax, Background } from 'react-parallax';
+import ilkal from '../../assets/ilkal_1.jpg'
 
 const contentStyle = {
     height: '160px',
@@ -28,40 +30,54 @@ const contentStyle = {
     render() {
         return (
             <div>
-                  <Carousel effect="fade">
+                  {/* <Carousel autoplay>
                     <div>
                     <h3 style={contentStyle}>1</h3>
                     </div>
                     <div>
                     <h3 style={contentStyle}>2</h3>
                     </div>
-                </Carousel>
-                    <Link to='/list'>
-                        <Card hoverable style={{ width: 400 }} align='center' onClick={this.handleGetProducts} >all</Card>
-                    </Link>
-                <Row gutter={[16 , { xs: 8, sm: 16, md: 24, lg: 32 }]} align='center'>
+                </Carousel> */}
 
+                <Parallax
+                    
+                    bgImage={ilkal}
+                    bgImageAlt="the cat"
+                    strength={200}
+                >
+                    <h1 align='right' style={{color : 'white' , padding : '60px'}}>Pure ilkal sarees</h1>
+                    <Link to='/list'>
+                        <Button  style={{color : 'white' }} onClick={this.handleGetProducts} align='center' >all</Button><br/>
+                    </Link>
+                    <div style={{ height: '200px' }} />
+                </Parallax>
+
+                <div align='center'>
+                    <Link to='/list'>
+                        <Card hoverable style={{ width: 400 }}  onClick={this.handleGetProducts} align='center' >all</Card><br/>
+                    </Link>
+                </div>
+               
                 {
                     this.props.category.length > 0 && (
-                        this.props.category.map(e => {
+                        this.props.category.map((e , index) => {
                             return (
-                                <Col key={e._id}>
+                                <div align='center' key={index}>
                                     <Link to={{pathname: `/list` , search:`${e._id}` }}>
                                         <Card 
                                             hoverable
                                             style={{ width: 400 }} 
-                                            align='center' 
                                             onClick={()=>{this.handleCategory(e._id)}}
                                         >
                                             {e.name}
-                                        </Card>
+                                        </Card><br/>
                                     </Link>
-                                </Col>
+                                </div>
                             )
                         })
                     )
                 }
-                </Row>
+              <h1 align='center'>Why Ilkal Sarees2..?</h1>
             </div>
         )
     }

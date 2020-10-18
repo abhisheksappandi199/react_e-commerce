@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {startGetCart} from '../../actions/cartAction'
 import {startAddOrders} from '../../actions/myorderAction'
+import {Button} from 'antd'
 
 function loadScript(src) {
 	return new Promise((resolve) => {
@@ -79,7 +80,7 @@ function Payment(props) {
 	return (
 		<div className="App">{console.log("props",props)}
 			<header className="App-header">
-        <button> 
+        <Button type="primary" style={{ background: "green ", borderColor: "white" }} block> 
           <a
             className="App-link"
             onClick={displayRazorpay}
@@ -88,7 +89,7 @@ function Payment(props) {
           >
           Pay Now
           </a>
-        </button>
+        </Button>
 			</header>
 		</div>
 	)

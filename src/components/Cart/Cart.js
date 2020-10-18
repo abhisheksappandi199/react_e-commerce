@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {startGetCart} from '../../actions/cartAction'
-import { Row, Col } from 'antd'
+import { Row, Col ,Button} from 'antd'
 import {Link } from 'react-router-dom'
 import CartItems from '../CartItems/CartItems.js'
 import UserAddress from '../UserAddress/UserAddress'
@@ -28,7 +28,7 @@ class Cart extends Component {
     }
     render() {
         return (
-            <div>
+            <div  style={{ minHeight : '60vh' }}>
                 {
                 this.props.cart.length == 0 ? <h1 align='center'>Cart is Empty</h1> : (
                   <div>
@@ -41,8 +41,13 @@ class Cart extends Component {
                         <h1 align='center'>Address Deatils</h1>
                         <UserAddress/><br/>
                         {
-                            this.props.address.length > 0 ? <button onClick={this.handleGetBill}><Link to='/checkout'>Check Out</Link></button> :
-                            <button onClick={this.handleGetBill}>Check Out</button>
+                            this.props.address.length > 0 
+                            ? 
+                            <Button type="primary" style={{ background: "green ", borderColor: "white" }}onClick={this.handleGetBill} >
+                                <Link to='/checkout' style={{color:'white'}}>Check Out</Link>
+                            </Button> 
+                            :
+                            <Button type="primary" style={{ background: "green ", borderColor: "white" }} onClick={this.handleGetBill} >Check Out</Button>
                         }
                         
                     </Col>

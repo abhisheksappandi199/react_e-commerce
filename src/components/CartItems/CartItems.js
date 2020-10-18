@@ -43,7 +43,7 @@ class CartItems extends Component {
                             <h3><b>{product.productname}</b></h3>
                             <hr/>
                             {
-                               ( product.quantity == 1 &&  this.props.cart[0].products.length == 1 ) ? <DeleteOutlined onClick={this.hanldeDelete} />  : <button onClick={()=>{this.handleDecrement(product)}}>{product.quantity == 1 ? 'delete' : '-'}</button>
+                               ( product.quantity == 1 &&  this.props.cart[0].products.length == 1 ) ? <DeleteOutlined onClick={this.hanldeDelete} />  : <button onClick={()=>{this.handleDecrement(product)}}>{product.quantity == 1 ? <DeleteOutlined/> : '-'}</button>
                             }
                             
                             {product.quantity}

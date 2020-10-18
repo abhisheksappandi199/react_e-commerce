@@ -59,12 +59,12 @@ class UserInfo extends Component {
       }
     render() {
         return (
-            <div>
+            <div align='center' style={{ minHeight : '60vh' }}><br/>
                 <Card 
                     style={{ width: 500 }}
 
                     actions={[
-                    <UploadOutlined />,
+                    // <UploadOutlined />,
                     <EditOutlined key="edit" onClick={()=>{this.showModal(this.props.user)}}/>,
                     <EllipsisOutlined key="ellipsis" />,
                     ]}

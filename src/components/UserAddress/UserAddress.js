@@ -19,6 +19,7 @@ class UserAddress extends Component {
              states:'',
              addresstype:"",
              alternatemobile:'',
+             isSubmit : false ,
              statearray : [ "Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttarakhand","Uttar Pradesh","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli","Daman and Diu","Delhi","Lakshadweep","Puducherry"],
             visible: false,
             confirmLoading: false
@@ -47,12 +48,12 @@ class UserAddress extends Component {
 
       handleOk = (e) => {
         e.preventDefault()
-        setTimeout(() => {
-            this.setState({
-              visible: false,
-              confirmLoading: false,
-            });
-          }, 400)
+        // setTimeout(() => {
+        //     this.setState({
+                //visible: false,
+        //       confirmLoading: false,
+        //     });
+        //   }, 400)
         const obj ={
             name : this.state.username,
             landmark : this.state.landmark,
@@ -65,10 +66,17 @@ class UserAddress extends Component {
             alternatemobile  : this.state.alternatemobile,
         }
         console.log(obj);
-        this.props.dispatch(startUpdateaddress(this.state.id , obj))
-          this.setState({
-            confirmLoading: true,
-          });
+        if(obj.name.length > 0 && obj.landmark.length > 0 && obj.mobile.length === 10 && obj.street.length > 0 && obj.city.length > 0
+            && obj.pincode.length > 0 && obj.states.length > 0 && obj.addresstype.length > 0)
+            {
+                this.props.dispatch(startUpdateaddress(this.state.id , obj))
+                this.setState({
+                  confirmLoading: false,isSubmit : false, visible: false
+                });
+            }
+            else {
+                this.setState({ isSubmit : true , visible: true})
+            }
       };
     
       handleCancel = () => {
@@ -139,7 +147,7 @@ class UserAddress extends Component {
                             placeholder='name'
                             value={this.state.username}
                             onChange={this.handleChange}
-                        /><br/>
+                        /><small style={{color : 'red'}}> {( this.state.isSubmit && this.state.username.length === 0 ) ? '*Name is Required' : ''} </small><br/>
 
                         <label htmlFor="mobile">mobile*</label>
                         <Input
@@ -148,7 +156,8 @@ class UserAddress extends Component {
                             placeholder='mobile'
                             value={this.state.mobile}
                             onChange={this.handleChange}
-                        /><br/>
+                        /><small style={{color : 'red'}}> {( this.state.isSubmit && this.state.mobile.length === 0 ) ? '*Mobile number is Required' : ''} </small>
+                        <small style={{color : 'red'}}> {( (this.state.isSubmit && this.state.mobile.length > 0)  && (this.state.mobile.length < 10 || this.state.mobile.length > 10) ) ? '*Mobile number is Invalid' : ''} </small><br/>
 
                         <label htmlFor="street">street*</label>    
                         <Input
@@ -157,7 +166,7 @@ class UserAddress extends Component {
                             placeholder='street'
                             value={this.state.street}
                             onChange={this.handleChange}
-                        /><br/>
+                        /><small style={{color : 'red'}}> {( this.state.isSubmit && this.state.street.length === 0 ) ? '*Street is Required' : ''} </small><br/>
 
                         <label htmlFor="landmark">landmark*</label>
                         <Input
@@ -166,7 +175,7 @@ class UserAddress extends Component {
                             placeholder='landmark'
                             value={this.state.landmark}
                             onChange={this.handleChange}
-                        /><br/>
+                        /><small style={{color : 'red'}}> {( this.state.isSubmit && this.state.landmark.length === 0 ) ? '*Landmark is Required' : ''} </small><br/>
                         
                         <label htmlFor="city">city*</label>
                         <Input
@@ -175,7 +184,7 @@ class UserAddress extends Component {
                             placeholder='city'
                             value={this.state.city}
                             onChange={this.handleChange}
-                        /><br/>
+                        /><small style={{color : 'red'}}> {( this.state.isSubmit && this.state.city.length === 0 ) ? '*City is Required' : ''} </small><br/>
 
                         <label htmlFor="pincode">pincode*</label>
                         <Input
@@ -184,7 +193,7 @@ class UserAddress extends Component {
                             placeholder='pincode'
                             value={this.state.pincode}
                             onChange={this.handleChange}
-                        /><br/>
+                        /><small style={{color : 'red'}}> {( this.state.isSubmit && this.state.pincode.length === 0 ) ? '*Pincode is Required' : ''} </small><br/>
 
                         <label htmlFor="states">states</label><br/>
                         <select onChange={this.handlestateChange} value={this.state.states}>
@@ -196,7 +205,7 @@ class UserAddress extends Component {
                                     )
                                 })
                             }
-                        </select><br/>
+                        </select><small style={{color : 'red'}}> {( this.state.isSubmit && this.state.states.length === 0 ) ? '*State is Required' : ''} </small><br/>
 
                         <label htmlFor="alternatemobile">alternatemobile</label>
                         <Input
@@ -226,6 +235,7 @@ class UserAddress extends Component {
                             value={this.state.addresstype == 'other'}
                             onChange={()=>{this.handleAddressType('other')}}
                         />{" "}other{" "}
+                        <small style={{color : 'red'}}> {( this.state.isSubmit && this.state.addresstype.length === 0 ) ? '*Address Type is Required' : ''} </small>
                     </form>
                 </Modal>
             </div>

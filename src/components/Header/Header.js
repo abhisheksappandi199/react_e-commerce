@@ -59,7 +59,7 @@ class HeaderComponent extends React.Component {
                 <div className="logo">
                     <ion-icon className='icon-book' name="book" size="medium">
                         <Link className='menu-item' to="/home">
-                            <img src={logo}/>
+                            <img src={logo}/><label>Ilkal Sarees</label>
                         </Link>
                     </ion-icon>
                 </div>
@@ -73,7 +73,7 @@ class HeaderComponent extends React.Component {
                 <Menu className='menu-component'  mode="horizontal">
                     <Menu.Item className='nav-item' key='6' > <Search placeholder="input search text" onSearch={(value)=>{this.handelSearch(value)}} style={{ width: 650 }}/></Menu.Item>
                     <Menu.Item className='nav-item' key="1"><Link className='menu-item' to="/account">My Account</Link></Menu.Item>
-                    <Menu.Item className='nav-item' key="2"><Link className='menu-item' to="/offers">Offers</Link></Menu.Item>
+                    <Menu.Item className='nav-item' key="2"><Link className='menu-item' to="/help">Help.. ?</Link></Menu.Item>
                     <Menu.Item className='nav-item' key="4"> <Link className='menu-item' to="/cart"><FaShoppingCart size={14} color="white"/>{" "}Cart</Link></Menu.Item>
                     <Menu.Item className="nav-item" key="5" onClick={this.handleLogout}><label className='menu-item'>Logout</label></Menu.Item>
                      

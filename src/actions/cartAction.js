@@ -73,7 +73,7 @@ export const startAddCart = (obj)=>{
         })
         .then((response)=>{
             const cart = response.data
-            console.log(cart);
+            console.log("this is cart",cart);
             if(!cart.errors){
                 toast.success('Added to Cart', {
                     position: "top-center",

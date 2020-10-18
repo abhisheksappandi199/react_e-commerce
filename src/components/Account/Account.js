@@ -16,7 +16,7 @@ class Account extends Component {
     // }
     render() {                   // onClick={this.handleGetOrders}
         return (
-            <div className='account-margin'>
+            <div className='account-margin' style ={{ minHeight : '70vh' }}>
                 
                 <Row gutter={[16 , 24]}>
 

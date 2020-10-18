@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { Row, Col , Card, Avatar} from 'antd'
 import {startGetOrders} from '../../actions/myorderAction'
+import Moment from 'react-moment'
 import './userorder.css'
 
 class UserOrders extends Component {
@@ -16,7 +17,7 @@ class UserOrders extends Component {
                 {
                      this.props.myorder.length > 0 ? ( this.props.myorder[0] && 
                      
-                        ( this.props.myorder[0].myorders.map((e , index)=> {
+                        ( (this.props.myorder[0].myorders.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt) )).map((e , index)=> {
                             return (
                                 <div   className='overlap' key={index}><br/>
                                 <Card style={{ width: 900 }}>
@@ -47,9 +48,9 @@ class UserOrders extends Component {
                                 }
                                 </Col>
                                 <Col span={8}>
-                                <h4>Ordered At : {e.date}</h4>
-                                <h4>Order_Id : {e.ids.razorpay_order_id}</h4>
-                                <h4>Payment_id : {e.ids.razorpay_payment_id}</h4><br/>
+                                <h4><b>Ordered At :</b> <Moment format="DD-MM-YYYY HH:mm">{e.date}</Moment></h4>
+                                <h4><b>Order_Id :</b> {e.ids.razorpay_order_id}</h4>
+                                <h4><b>Payment_id :</b> {e.ids.razorpay_payment_id}</h4><br/>
                                 <h3>Total : <b>Rs.{e.total}/-</b></h3>
                                 </Col>
                                 </Row>

@@ -58,12 +58,20 @@ class Checkout extends Component {
                     </Col>
 
                     <Col span={6}>
-                        <h2 align ='center'>Payment</h2>
+                        <h2 align ='center'>Payment</h2>    
+                        <Card style={{ width: 300 }}>
+                        
                         <h2><li>Razorpay</li></h2>
-                        <h3>Total Amount : Rs.{this.props.bill.length > 0 && this.props.bill[0].total}/-</h3>
+                        <div className='alignonsame'>
+                        <h3>Total Amount : <b> Rs.{this.props.bill.length > 0 && this.props.bill[0].total}/-</b></h3>
+
+                        </div>
+                        <h5 className='greeting' style={{color : 'green'}}><b>*Including GST</b></h5>
+                        <h5 className='greeting' style={{color : 'green'}}><b>*Free Shipping</b></h5><br/>
                         <Payment 
                             bill_id={this.props.bill.length > 0 && this.props.bill[0]._id}
                         />
+                        </Card>
                     </Col>
                     </Row> 
             </div>

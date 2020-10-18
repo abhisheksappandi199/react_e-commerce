@@ -18,7 +18,7 @@ export const startAdminPostLogin = (logindata,redirect) =>{
             
             if(data.hasOwnProperty('errors'))
             {
-                dispatch(adminsetuserlogin(data))
+                //dispatch(adminsetuserlogin(data))
             }
             else{
                 localStorage.setItem("ownerToken", data.token)

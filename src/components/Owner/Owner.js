@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import { Tabs } from 'antd'
+import { Tabs , Button} from 'antd'
 import './owner.css'
 import Product from './Product'
 import TotalOrders from './TotalOrders'
+import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 
 const {TabPane} = Tabs
 
-export default class Owner extends Component {
+class Owner extends Component {
     hanldeAdminLogout = () =>{
         localStorage.clear()
         this.props.history.push('/')
@@ -14,7 +16,7 @@ export default class Owner extends Component {
     render() {
         return (
                 <div className="card-container">
-                    <button onClick={this.hanldeAdminLogout}>logout</button>
+                    
                     <Tabs type="card">
                     <TabPane tab="Create Product" key="1">
                         <Product/>
@@ -23,11 +25,14 @@ export default class Owner extends Component {
                         <TotalOrders/>
                     </TabPane>
                     <TabPane tab="Tab Title 3" key="3">
-                        
+                        <p>hi</p>
+                    </TabPane>
+                    <TabPane tab='sd' key="4">
+                    <Button type="primary" onClick={this.hanldeAdminLogout}>logout</Button>
                     </TabPane>
                     </Tabs>
-                    
                 </div>
         )
     }
 }
+export default withRouter(connect()(Owner))

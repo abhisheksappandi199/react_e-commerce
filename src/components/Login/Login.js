@@ -3,6 +3,7 @@ import {startPostLogin} from '../../actions/loginAction'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import { Button, Card } from 'antd';
+import logo from '../../assets/log.png'
 import './Login.css'
 
 class Login extends Component {
@@ -22,19 +23,20 @@ handleSubmit=(e)=>{
         email : this.state.email,
         password : this.state.password
     }
-    console.log(logindata);
-    this.setState({email:'' , password:''})
+    //console.log(logindata);
+    
     //redirect
     const redirect = () =>{
         return this.props.history.push('/home')
     }
     this.props.dispatch(startPostLogin(logindata,redirect))
+    this.setState({email:'' , password:''})
  }
 render() {
     return (
-            <div className="login-main">{console.log("login props",this.props)}
+            <div className="login-main">
              <div className="login-container">
-                <ion-icon class='icon-book' name="book"></ion-icon>   
+                <ion-icon class='icon-book' name="book"><img src={logo} /></ion-icon>   
                 <h2 className="login-heading">Sign in to Ilkal Sarees</h2>
                     <div className="login-group">
                         <Card className="login-card" style={{border: '1px solid #d8dee2'}}>
@@ -46,7 +48,7 @@ render() {
                                  id="email" 
                                  placeholder="Enter Email" 
                                  name="email" 
-                                 value={this.state.username} 
+                                 value={this.state.email} 
                                  onChange={this.handleChange} 
                                  required 
                                  />
