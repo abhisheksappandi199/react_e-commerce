@@ -23,7 +23,7 @@ export const startGetcategory = () =>{
         })
         .then((response)=>{
             const user = response.data
-            //console.log(user);
+            ////console.log(user);
             
             dispatch(getcategory(user))
         })
@@ -42,7 +42,7 @@ export const startAddcategory = (data,redirect)=>{
         })
         .then((response)=>{
             const user = response.data
-            console.log(user);
+            //console.log(user);
             if(!user.errors){
                 dispatch(addcategory(user))
                 redirect()

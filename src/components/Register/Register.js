@@ -21,7 +21,7 @@ class Register extends Component {
     }
     handleSubmit=(e)=>{
         e.preventDefault()
-        console.log('submitted');
+        //console.log('submitted');
         const registerdata = {
             username : this.state.username,
             email : this.state.email,
@@ -29,7 +29,7 @@ class Register extends Component {
             mobile : this.state.mobile,
             role : this.state.role
         }
-        console.log(registerdata);
+        //console.log(registerdata);
         
         if(registerdata.username.length > 0 && registerdata.email.includes('@') && registerdata.email.length > 0&& registerdata.password.length > 8 && registerdata.mobile.length == 10){
             const redirect = () =>{

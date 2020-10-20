@@ -13,7 +13,7 @@ export const startpostRegister = (registerdata , redirect) =>{
         .then((response)=>{
             const data = response.data
             
-            //console.log(data)
+            ////console.log(data)
             if(!data.driver){
                 toast.success('User successfully Registered' ,{
                     position: "top-center",
@@ -41,7 +41,7 @@ export const startpostRegister = (registerdata , redirect) =>{
             }
         })
         .catch((error)=>{
-            console.log(error)
+            //console.log(error)
         })
     }
 }

@@ -10,7 +10,7 @@ import {startGetaddress} from '../../actions/addressAction'
 class Cart extends Component {
     componentDidMount(){
         // const id = ( this.props.cart.length === 1 && (this.props.cart[0]._id) )
-        // console.log(id);
+        // //console.log(id);
         // if(id){
             
         //     //localStorage.setItem('cartid',id)
@@ -20,7 +20,7 @@ class Cart extends Component {
     }
     handleGetBill =() => {
         if(this.props.address.length > 0){
-            console.log("checkout");
+            //console.log("checkout");
         }
         else{
             window.alert('Please fill the address')

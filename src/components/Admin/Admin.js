@@ -24,7 +24,7 @@ handleSubmit=(e)=>{
         password : this.state.password,
         admincode : this.state.admincode
     }
-    console.log(logindata);
+    //console.log(logindata);
     this.setState({email:'' , password:''})
     //redirect
     const redirect = () =>{

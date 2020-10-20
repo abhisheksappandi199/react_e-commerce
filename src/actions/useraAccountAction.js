@@ -16,7 +16,7 @@ export const startGetUserAccount = () =>{
         })
         .then((response)=>{
             const user = response.data
-            console.log(user);
+            //console.log(user);
             
             dispatch(getuser(user))
         })

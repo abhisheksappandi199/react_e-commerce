@@ -26,7 +26,7 @@ export const startGetproduct = () =>{
         })
         .then((response)=>{
             const user = response.data
-            //console.log(user);
+            ////console.log(user);
             
             dispatch(get(user))
         })
@@ -63,7 +63,7 @@ export const startAddproduct = (data)=>{
         })
         .then((response)=>{
             const user = response.data
-            console.log(user);
+            //console.log(user);
             if(!user.errors){
                 //dispatch(add(user))
             }  

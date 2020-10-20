@@ -8,11 +8,11 @@ import './cartitems.css'
 
 class CartItems extends Component {
     handleIncrement = (product) =>{
-        console.log(product);
+        //console.log(product);
         this.props.dispatch(startGetCartIncrement(this.props.cart[0]._id , product._id))
     }
     handleDecrement = (product) =>{
-        console.log(product);
+        //console.log(product);
         this.props.dispatch(startGetCartDecrement(this.props.cart[0]._id , product._id))
     }
     handleRemoveProduct = (product) => {

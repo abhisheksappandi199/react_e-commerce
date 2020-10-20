@@ -34,9 +34,9 @@ const { Meta } = Card;
      }
     //  category = () => {
     //     if(this.props.category){
-    //         console.log(this.props.category);
+    //         //console.log(this.props.category);
     //         if(this.props.category._id){
-    //             console.log('in catregory');
+    //             //console.log('in catregory');
     //             return (this.props.products.filter(e => e.category == this.props.category._id))
     //         }
     //         else {
@@ -44,7 +44,7 @@ const { Meta } = Card;
     //         }
     //      }
     //      else {
-    //         console.log('in cat in filter');
+    //         //console.log('in cat in filter');
     //         return (this.filter())
     //     }
     //  }
@@ -83,7 +83,7 @@ const { Meta } = Card;
     render() {
         return (
             <div className='div-component'>
-                {console.log(this.props)}
+                
                 <Row gutter={[16 , { xs: 8, sm: 16, md: 24, lg: 32 }]}>
                 {
                      (this.filter()).map((e , index)=> {
@@ -111,7 +111,7 @@ const { Meta } = Card;
 const mapStateToProps = (state,props) =>{
     // const path = window.location.search
     // const id = path.slice(1)
-    // console.log(path);
+    // //console.log(path);
      return {
          products : state.products ,
          search : state.search ,

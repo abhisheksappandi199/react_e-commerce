@@ -14,7 +14,7 @@ export const startAdminPostLogin = (logindata,redirect) =>{
         .then((response)=>{
             const data = response.data
             //dispatch(setuserlogin(data))
-            //console.log(data)
+            ////console.log(data)
             
             if(data.hasOwnProperty('errors'))
             {
@@ -27,7 +27,7 @@ export const startAdminPostLogin = (logindata,redirect) =>{
             }
         })
         .catch((error)=>{
-            console.log(error.message)
+            //console.log(error.message)
         })
     }
 }

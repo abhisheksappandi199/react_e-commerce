@@ -8,7 +8,7 @@ import './checkout.css'
 
 class Checkout extends Component {
     componentDidMount(){
-            console.log('component did mount');
+            //console.log('component did mount');
             this.props.dispatch(startGetBill())
             this.props.dispatch(startGetaddress())
     }

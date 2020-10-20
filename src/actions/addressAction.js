@@ -23,13 +23,13 @@ export const startGetaddress = () =>{
         })
         .then((response)=>{
             const user = response.data
-            //console.log(user);
+            ////console.log(user);
             if(user){
                 dispatch(getaddress(user))
             }
         })
         .catch((error)=>{
-            console.log(error);
+            //console.log(error);
             alert(error.message)
         })
     }
@@ -44,7 +44,7 @@ export const startAddaddress = (data,redirect)=>{
         })
         .then((response)=>{
             const user = response.data
-            console.log("this is data came from address server ",user);
+            //console.log("this is data came from address server ",user);
             if(user){
                 dispatch(addaddress(user))
                 redirect()

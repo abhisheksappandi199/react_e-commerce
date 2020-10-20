@@ -65,7 +65,7 @@ class UserAddress extends Component {
             addresstype  : this.state.addresstype,
             alternatemobile  : this.state.alternatemobile,
         }
-        console.log(obj);
+        //console.log(obj);
         if(obj.name.length > 0 && obj.landmark.length > 0 && obj.mobile.length === 10 && obj.street.length > 0 && obj.city.length > 0
             && obj.pincode.length > 0 && obj.states.length > 0 && obj.addresstype.length > 0)
             {

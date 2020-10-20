@@ -40,7 +40,7 @@ import {startGetcategory} from '../../actions/categoryAction'
     componentDidMount(){
       this.props.dispatch(startGetcategory())
       this.setState({ categoryselect : this.props.category })
-      //console.log(this.state.category);
+      ////console.log(this.state.category);
     }
     
     handleChange=(e)=>{
@@ -94,8 +94,8 @@ import {startGetcategory} from '../../actions/categoryAction'
         size : this.state.size ,
         category : this.state.category
     }
-    console.log(productdata);
-    console.log(this.state.downloadURLs);
+    //console.log(productdata);
+    //console.log(this.state.downloadURLs);
     this.setState({productname:'',price:'',description:"",stock:'',filenames:[],downloadURLs:[],color:'',size:'',category:''})
     this.props.dispatch(startAddproduct(productdata))
 }
@@ -203,7 +203,7 @@ import {startGetcategory} from '../../actions/categoryAction'
     }
 }
 const mapStateToProps = (state,props) =>{
-  //console.log(props);
+  ////console.log(props);
    return {
        category : state.category
    }

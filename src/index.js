@@ -10,10 +10,10 @@ import {startGetproduct} from './actions/productAction'
 import {startGetaddress} from './actions/addressAction'
 
 const store = configureStore()
-console.log('store initial state', store.getState())
+//console.log('store initial state', store.getState())
 
 store.subscribe(() => {
-    console.log(store.getState())
+    //console.log(store.getState())
 })
 
 //for hanlding the reloads

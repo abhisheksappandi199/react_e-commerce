@@ -41,7 +41,7 @@ function Payment(props) {
 			t.json()
 		)
 
-		console.log("this the data : ",data)
+		//console.log("this the data : ",data)
 
 		const options = {
 			key: 'rzp_test_6FWcmU32U1iLtf' ,
@@ -55,7 +55,7 @@ function Payment(props) {
 				// alert(response.razorpay_payment_id)
 				// alert(response.razorpay_order_id)
 				// alert(response.razorpay_signature)
-				console.log("came from payment" ,response);
+				//console.log("came from payment" ,response);
 				if(response){
 					const redirect = () =>{
 						return props.history.push('/home')
@@ -78,7 +78,7 @@ function Payment(props) {
 	}
 
 	return (
-		<div className="App">{console.log("props",props)}
+		<div className="App">
 			<header className="App-header">
         <Button type="primary" style={{ background: "green ", borderColor: "white" }} block> 
           <a

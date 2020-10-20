@@ -34,7 +34,7 @@ export const startGetCart = () =>{
         })
         .then((response)=>{
             const user = response.data
-            //console.log(user);
+            ////console.log(user);
             if(user){
                 dispatch(getcart(user))
             }
@@ -54,13 +54,13 @@ export const startGetCart = () =>{
 //         })
 //         .then((response)=>{
 //             const cart = response.data
-//             console.log(cart);
+//             //console.log(cart);
 //             if(!cart.errors || ( !cart[0].driver) ){
 //                 dispatch(addFirstCart(cart))
 //             }  
 //         })
 //         .catch((error)=>[
-//             console.log(error.message)
+//             //console.log(error.message)
 //         ])
 //     }
 // }
@@ -73,7 +73,7 @@ export const startAddCart = (obj)=>{
         })
         .then((response)=>{
             const cart = response.data
-            console.log("this is cart",cart);
+            //console.log("this is cart",cart);
             if(!cart.errors){
                 toast.success('Added to Cart', {
                     position: "top-center",
@@ -88,7 +88,7 @@ export const startAddCart = (obj)=>{
             }
         })
         .catch((error)=>{
-            console.log(error.message)
+            //console.log(error.message)
         })
     }
 }
@@ -101,7 +101,7 @@ export const startGetCartIncrement = (cartid,productid) =>{
         })
         .then((response)=>{
             const user = response.data
-            console.log(user);
+            //console.log(user);
             
             dispatch(getincrement(cartid,productid ,user))
         })
@@ -119,7 +119,7 @@ export const startGetCartDecrement = (cartid,productid) =>{
         })
         .then((response)=>{
             const user = response.data
-            console.log(user);
+            //console.log(user);
             
             dispatch(getdecrement(cartid,productid ,user))
         })

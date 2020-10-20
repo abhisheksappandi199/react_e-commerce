@@ -20,13 +20,13 @@ export const startGetOrders = () =>{
         })
         .then((response)=>{
             const user = response.data
-            console.log("this is myorders",user);
+            //console.log("this is myorders",user);
             if(user.length > 0 && !user.errors){
                 dispatch(getOrders(user))
             }
         })
         .catch((error)=>{
-            console.log(error);
+            //console.log(error);
             alert(error.message)
         })
     }
@@ -41,7 +41,7 @@ export const startAddOrders = (id ,data,redirect)=>{
         })
         .then((response)=>{
             const order = response.data
-            console.log("this is data came from address server ",order);
+            //console.log("this is data came from address server ",order);
             if(order){
                 dispatch(addOrders(order))
                 redirect()

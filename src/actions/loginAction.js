@@ -17,7 +17,7 @@ export const startPostLogin = (logindata,redirect) =>{
         .then((response)=>{
             const data = response.data
             //dispatch(setuserlogin(data))
-            //console.log(data)
+            ////console.log(data)
             
             if(data.hasOwnProperty('errors'))
             {
@@ -37,7 +37,7 @@ export const startPostLogin = (logindata,redirect) =>{
                 // axios.get(`/products`)
                 // .then((response)=>{
                 //     const allProducts = response.data
-                //     //console.log(allProducts);
+                //     ////console.log(allProducts);
                     dispatch(userdata(data))
                     redirect()
                 // })
@@ -48,7 +48,7 @@ export const startPostLogin = (logindata,redirect) =>{
             }
         })
         .catch((error)=>{
-            console.log(error.message)
+            //console.log(error.message)
         })
     }
 }

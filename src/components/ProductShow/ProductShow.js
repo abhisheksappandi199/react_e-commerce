@@ -33,7 +33,7 @@ import './productshow.css'
      }
      handleClick = (e) => {
         this.setState({ image : e})
-        console.log(e);
+        //console.log(e);
      }
     render() {
         //const props = {width: 400, height: 300, zoomWidth: 300 ,img: this.props.product && this.props.product.image[0]};
@@ -86,7 +86,7 @@ import './productshow.css'
                                     height: 1800 // 1800
                                 }
                             }} />
-                            {console.log(this.state.image)}
+                            
 
                             {/* <ReactImageZoom {...props} /> */}
                             {/* <Magnifier

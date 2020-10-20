@@ -12,7 +12,7 @@ export const startShowproduct = (id)=>{
         })
         .then((response)=>{
             const user = response.data
-            console.log(user);
+            //console.log(user);
             if(!user.errors){
                 dispatch(showproduct(user))
             }  

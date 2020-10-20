@@ -24,7 +24,7 @@ handleSubmit=(e)=>{
         email : this.state.email,
         password : this.state.password
     }
-    //console.log(logindata);
+    ////console.log(logindata);
     if(logindata.email.length > 0 && logindata.password.length > 0){
         const redirect = () =>{
             return this.props.history.push('/home')
