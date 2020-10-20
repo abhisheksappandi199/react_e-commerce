@@ -11,7 +11,8 @@ constructor(){
     super()
     this.state={
         email:'',
-        password:''
+        password:'' ,
+        isSubmit : false
     }
 }
 handleChange=(e)=>{
@@ -24,13 +25,18 @@ handleSubmit=(e)=>{
         password : this.state.password
     }
     //console.log(logindata);
-    
-    //redirect
-    const redirect = () =>{
-        return this.props.history.push('/home')
+    if(logindata.email.length > 0 && logindata.password.length > 0){
+        const redirect = () =>{
+            return this.props.history.push('/home')
+        }
+        this.props.dispatch(startPostLogin(logindata,redirect))
+        this.setState({email:'' , password:'' , isSubmit : false})
     }
-    this.props.dispatch(startPostLogin(logindata,redirect))
-    this.setState({email:'' , password:''})
+    else {
+        this.setState({ isSubmit : true })
+    }
+    //redirect
+
  }
 render() {
     return (
@@ -43,25 +49,37 @@ render() {
                             <form onSubmit={this.handleSubmit}>
                                 <label className="group-label" htmlFor="email">Email*</label><br /> 
                                 <input  
-                                 className="group-input" 
-                                 type="text" 
-                                 id="email" 
-                                 placeholder="Enter Email" 
-                                 name="email" 
-                                 value={this.state.email} 
-                                 onChange={this.handleChange} 
-                                 required 
+                                    className="group-input" 
+                                    type="text" 
+                                    id="email" 
+                                    placeholder="Enter Email" 
+                                    name="email" 
+                                    value={this.state.email} 
+                                    onChange={this.handleChange} 
+                                    required 
                                  />
-                                 <br />
+                                 <p className='p-tag' style={{color : 'red'}}> {( this.state.isSubmit && this.state.email.length === 0 ) ? '*Email is Required' : ''} </p>
+
                                  <label className="group-label" htmlFor="password">Password*</label><br />
-                                <input className="group-input" type="password" id="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} required={true} />
-                                
+                                <input 
+                                    className="group-input" 
+                                    type="password" 
+                                    id="password" 
+                                    placeholder="Password" 
+                                    name="password" 
+                                    value={this.state.password} 
+                                    onChange={this.handleChange} 
+                                    required={true} 
+                                />
+                                <p className='p-tag' style={{color : 'red'}}> {( this.state.isSubmit && this.state.password.length === 0 ) ? '*Password is Required' : ''} </p>
+                                { this.props.login.errors && (<p className='p-tag' style={{color : 'red'}}>*{this.props.login.errors}</p>) }
+
                                 <Button block size="medium" id="green-button" type="primary" htmltype="submit" onClick={this.handleSubmit}> Sign in </Button>         
                             </form>
                         </Card>
                     </div>            
                     <div className="login-subcard-group">
-                        { this.props.login.errors && (<small style={{color : 'red'}}>*{this.props.login.errors}</small>) }
+                        
                         <Card className="login-subcard" style={{border: '1px solid #d8dee2', paddingBottom: '20px', textAlign: 'center'}}>
                             <p>New to FreshBills? <Link to="/register">Create an account.</Link></p>
                             {/*   <p><Link to='/newform'>New Form</Link></p> */}

@@ -13,7 +13,7 @@ class UserOrders extends Component {
     }
     render() {
         return (
-            <div align='center'>
+            <div align='center' style={{ minHeight : '50vh' }}>
                 {
                      this.props.myorder.length > 0 ? ( this.props.myorder[0] && 
                      

@@ -59,7 +59,7 @@ class UserInfo extends Component {
       }
     render() {
         return (
-            <div align='center' style={{ minHeight : '60vh' }}><br/>
+            <div align='center' style={{ minHeight : '50vh' }}><br/>
                 <Card 
                     style={{ width: 500 }}
 

@@ -34,6 +34,8 @@ class Checkout extends Component {
                                 }) }
                                 <h2 align='right'>Total : <b>Rs.{this.props.bill[0].total}/-</b></h2>
                                 {/* <h3>Created At :</h3><p>{this.props.bill[0].createdAt.slice(0 ,19)}</p> */}
+                                <h2 align='left' style={{color : 'red'}}>Card Details : 4111 1111 1111 1111</h2>
+                                <h2 align='left' style={{color : 'red'}}>CVV : Random CVV</h2>
                                 </>
                             ) : ''
                         }

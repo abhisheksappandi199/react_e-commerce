@@ -14,7 +14,7 @@ export const startpostRegister = (registerdata , redirect) =>{
             const data = response.data
             
             //console.log(data)
-            if(!data.hasOwnProperty('errors')){
+            if(!data.driver){
                 toast.success('User successfully Registered' ,{
                     position: "top-center",
                     autoClose: 2000,
@@ -27,6 +27,17 @@ export const startpostRegister = (registerdata , redirect) =>{
                 dispatch(setRegister(data))
                 redirect()
             //props.history.push('/home')
+            }
+            else {
+                toast.error('User Already Exist....!! (please login..)', {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });   
             }
         })
         .catch((error)=>{

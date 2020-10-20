@@ -2,7 +2,7 @@
 	background-color: seagreen !important;
 	background-image: linear-gradient(-180deg, #34d058, #28a745 90%) !important;
 	border: none;
-	margin-top: 25px;
+	margin-top: 5px;
 	padding-bottom: 10px;
 }
 .login-main {
@@ -31,7 +31,7 @@
 }
 .login-card {
 	width: 308px;
-	height: 233px;
+	height: 270px;
 	padding: 10px;
 }
 .login-subcard-group {
@@ -76,4 +76,8 @@
 	margin-bottom: -40px;
 	padding-right: 2px;
 	/* margin-right: 2px; */
+}
+.p-tag {
+	margin: 0;
+    padding: 0;
 }

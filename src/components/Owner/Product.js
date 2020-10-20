@@ -187,9 +187,9 @@ import {startGetcategory} from '../../actions/categoryAction'
 
                     <p>Filenames: {this.state.filenames.join(", ")}</p>
                     <div>
-                    {this.state.downloadURLs.map((downloadURL, i) => {
+                    {/* {this.state.downloadURLs.map((downloadURL, i) => {
                         return <img key={i} src={downloadURL} />;
-                    })}
+                    })} */}
                     </div>
                 </div>
 

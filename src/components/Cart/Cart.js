@@ -28,7 +28,7 @@ class Cart extends Component {
     }
     render() {
         return (
-            <div  style={{ minHeight : '60vh' }}>
+            <div  style={{ minHeight : '50vh' }}>
                 {
                 this.props.cart.length == 0 ? <h1 align='center'>Cart is Empty</h1> : (
                   <div>

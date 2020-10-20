@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
+.p-tag {
+	margin: 0;
+    padding: 0;
+}
 .register-div {
 	background: url('./simple-codelines.svg'), #2b3137;
 	width: 100vw;
@@ -51,7 +55,7 @@
 }
 
 .register-card {
-	height: 429px;
+	height: 499px;
 	width: 426px;
 }
 

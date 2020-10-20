@@ -43,18 +43,18 @@ const contentStyle = {
                     
                     bgImage={ilkal}
                     bgImageAlt="the cat"
-                    strength={200}
-                >
-                    <h1 align='right' style={{color : 'white' , padding : '60px'}}>Pure ilkal sarees</h1>
-                    <Link to='/list'>
-                        <Button  style={{color : 'white' }} onClick={this.handleGetProducts} align='center' >all</Button><br/>
-                    </Link>
-                    <div style={{ height: '200px' }} />
+                    strength={660}
+                >   <br/>
+                    <h1 align='right' style={{color : 'white' , padding : '60px' }}>Pure ilkal sarees <br/>
+                        <Button  onClick={this.handleGetProducts} align='center' ><Link to='/list'><b>Show Now</b></Link></Button><br/>
+                    </h1> 
+                   
+                    <div style={{ height: '350px' }} />
                 </Parallax>
 
                 <div align='center'>
                     <Link to='/list'>
-                        <Card hoverable style={{ width: 400 }}  onClick={this.handleGetProducts} align='center' >all</Card><br/>
+                        <Card hoverable style={{ width: 400 }}  onClick={this.handleGetProducts} align='center' ><h2>all</h2></Card><br/>
                     </Link>
                 </div>
                
@@ -69,7 +69,7 @@ const contentStyle = {
                                             style={{ width: 400 }} 
                                             onClick={()=>{this.handleCategory(e._id)}}
                                         >
-                                            {e.name}
+                                            <h2>{e.name}</h2>
                                         </Card><br/>
                                     </Link>
                                 </div>
